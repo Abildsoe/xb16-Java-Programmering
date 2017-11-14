@@ -31,7 +31,6 @@ public class Data {
             User user14 = new User("Dorte43@gmail.com", 1333, 2, "Team Pia", 35, 3);
             User user15 = new User("Klaus78@gmail.com", 1334, 2, "Team Pia", 65, 3);
 
-
             users.add(user);
             users.add(user1);
             users.add(user2);
@@ -60,4 +59,3 @@ public class Data {
         }
 
     }
-
