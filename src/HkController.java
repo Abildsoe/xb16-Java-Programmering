@@ -93,6 +93,10 @@ public class HkController {
     }
 
     private void oplysningerpåegetHold() {
+
+
+
+
     }
 
     private void statistikpåKmogkørselsdage() {
