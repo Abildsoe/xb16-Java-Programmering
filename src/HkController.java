@@ -96,7 +96,6 @@ public class HkController {
     private void oplysningerpåegetHold() {
 
 
-System.out.println("du har valgt nr. 5");
 
 
     }
