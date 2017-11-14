@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class UserController {
 
     Scanner input = new Scanner(System.in);
@@ -7,7 +6,6 @@ public class UserController {
     public UserController() {
 
     }
-
     public void showUserMenu() {
 
         int valg;
