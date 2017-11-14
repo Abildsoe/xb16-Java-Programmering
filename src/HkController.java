@@ -75,10 +75,8 @@ public class HkController {
 
 
             } else {
-                System.out.println("Du har indtastet forkert brugernavn");
+                System.out.println("\nDu har indtastet forkert brugernavn");
             }
-
-
         }
     }
 
@@ -89,6 +87,7 @@ public class HkController {
     }
 
     private void oplysningerpåenDeltager() {
+
         System.out.println("\n1)Deltager: " + currentUser.getUsername() + "\n2)Brugertype:" + currentUser.getType() + "\n3)Brugerens hold: "
                 + currentUser.getHoldid() + "\n4)Brugerens indtastede kilometer: " + currentUser.getAntalkørtekilometer() + "\n5)Brugerens indtastede antal kørte dage: " + currentUser.getAntalkørtedage());
     }
@@ -107,6 +106,10 @@ public class HkController {
     }
 
     private void logUd() {
+
+        System.out.println("Du er nu logget ud af systemet, hvis du har lyst kan du logge ind igen eller på en anden bruger - tak for i dag.\n");
+        HkController hkController = new HkController();
+        hkController.run();
     }
 
     private void showHoldkaptajnmenu() {
@@ -147,7 +150,6 @@ public class HkController {
         antalkørtedage = input.nextInt();
         currentUser.setAntalkørtekilometer(antalkørtekilometer);
         currentUser.setAntalkørtedage(antalkørtedage);
-
 
         System.out.println("Du har indtastet følgende oplysninger:\nKilometer: " + antalkørtekilometer + "\nAntal kørselsdage: " + antalkørtedage);
     }

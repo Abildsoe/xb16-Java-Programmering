@@ -18,10 +18,6 @@ public class User {
     }
 
 
-    public User() {
-
-    }
-
     public String getUsername() {
         return username;
     }
@@ -57,6 +53,7 @@ public class User {
         this.holdid = holdid;
     }
 
+
     public int getAntalkørtekilometer() {
         return antalkørtekilometer;
     }
@@ -64,6 +61,7 @@ public class User {
     public void setAntalkørtekilometer(int antalkørtekilometer) {
         this.antalkørtekilometer = antalkørtekilometer;
     }
+
 
     public int getAntalkørtedage() {
         return antalkørtedage;
@@ -73,7 +71,10 @@ public class User {
         this.antalkørtedage = antalkørtedage;
     }
 
-
+    @Override
+    public String toString() {
+        return "\nholdID: " + this.holdid + ", \nName: " + this.username + ", \nType: " + this.type + ", \nAntal Kørte Kilometer: " + this.antalkørtekilometer + ", \nAntal kørte dage: " + this.antalkørtedage + "\n";
+    }
 }
 
 

@@ -76,9 +76,6 @@ public class Data {
         antalkørtedage = input.nextInt();
 
 
-        User users = new User();
-
-
     }
 
 
