@@ -62,12 +62,14 @@ public class HkController {
                             break;
 
                         case 7:
-                            visalleoplysningeromAllehold();
+                            //visalleoplysningeromAllehold();
+                            printInfo();
                             break;
 
                         case 8:
                             logUd();
                             break;
+
                         default:
                             break;
                     }
@@ -80,27 +82,42 @@ public class HkController {
         }
     }
 
-    private void ændreindberettedeOplysninger() {
+    private void indberetOplysninger() {
+
+        int antalkørtekilometer;
+        int antalkørtedage;
+        int i = currentUser.getAntalkørtedage();
+        int a = currentUser.getAntalkørtekilometer();
+
+        System.out.println("Indtast antal kørte kilometer:");
+        antalkørtekilometer = input.nextInt();
+        a += antalkørtekilometer;
+        currentUser.setAntalkørtekilometer(a);
+
+        System.out.println("Indtast antal kørselsdage:");
+        antalkørtedage = input.nextInt();
+        //currentUser.setAntalkørtekilometer(antalkørtekilometer);
+        i += antalkørtedage;
+        currentUser.setAntalkørtedage(i);
+
+        System.out.println("Du har indtastet følgende oplysninger:\nKilometer: " + currentUser.getAntalkørtekilometer() + "\nAntal kørselsdage: " + currentUser.getAntalkørtedage());
+
     }
 
-    private void sletOplysninger() {
-    }
+    private void ændreindberettedeOplysninger() { }
+
+    private void sletOplysninger() { }
 
     private void oplysningerpåenDeltager() {
 
         System.out.println("\n1)Deltager: " + currentUser.getUsername() + "\n2)Brugertype:" + currentUser.getType() + "\n3)Brugerens hold: "
                 + currentUser.getHoldid() + "\n4)Brugerens indtastede kilometer: " + currentUser.getAntalkørtekilometer() + "\n5)Brugerens indtastede antal kørte dage: " + currentUser.getAntalkørtedage());
-    }
-
-    private void oplysningerpåegetHold() {
-
-
-
 
     }
 
-    private void statistikpåKmogkørselsdage() {
-    }
+    private void oplysningerpåegetHold() { }
+
+    private void statistikpåKmogkørselsdage() { }
 
     private void visalleoplysningeromAllehold() {
         Data data = new Data();
@@ -143,21 +160,15 @@ public class HkController {
         return false;
     }
 
-    private void indberetOplysninger() {
-        int antalkørtekilometer;
-        int antalkørtedage;
+    public void printInfo(){
+        for(int i = 0; i<db.getUsers().size(); i++){
 
-        System.out.println("Indtast antal kørte kilometer:");
-        antalkørtekilometer = input.nextInt();
+            System.out.println(db.getUsers().get(i).getUsername());
+            System.out.println("Har kørt: " + db.getUsers().get(i).getAntalkørtekilometer() + );
 
-        System.out.println("Indtast antal kørselsdage:");
-        antalkørtedage = input.nextInt();
-        currentUser.setAntalkørtekilometer(antalkørtekilometer);
-        currentUser.setAntalkørtedage(antalkørtedage);
 
-        System.out.println("Du har indtastet følgende oplysninger:\nKilometer: " + antalkørtekilometer + "\nAntal kørselsdage: " + antalkørtedage);
+        }
     }
 }
-
 
 

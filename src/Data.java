@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Data {
     private ArrayList<User> users = new ArrayList<>();
     Scanner input = new Scanner(System.in);
-
+    User user;
 
     public Data() {
         this.users = new ArrayList<>();
@@ -26,10 +26,14 @@ public class Data {
         User user9 = new User("Sebastian29@gmail.com", 1312, 2, "Team Martin", 88, 4);
         User user10 = new User("Carl12@gmail.com", 1313, 2, "Team Martin", 55, 3);
         User user11 = new User("Stig59@gmail.com", 1317, 2, "Team Martin", 76, 4);
-        User user12 = new User("Pia55@gmail.com", 1305, 1, "Team Pia", 73, 3);
+        User user12 = new User("Pia55@gmail.com", 1305, 1, "Team Pia", "73", 3);
         User user13 = new User("Caroline23@gmail.com", 1304, 2, "Team Pia", 45, 3);
         User user14 = new User("Dorte43@gmail.com", 1333, 2, "Team Pia", 66, 4);
         User user15 = new User("Klaus78@gmail.com", 1334, 2, "Team Pia", 76, 4);
+
+        Teams team1 = new Teams("1", "Team Hans", "Hans");
+
+        user.getTeams().add(team1);
 
 
         users.add(user);
