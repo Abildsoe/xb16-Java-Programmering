@@ -1,10 +1,12 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class  HkController {
+public class HkController {
     private Data db;
     private Scanner input;
     private User currentUser;
+    private CykelTur currentCykeltur;
+    private Teams currentTeams;
 
 
     public HkController() {
@@ -12,6 +14,8 @@ public class  HkController {
         this.db = new Data();
         this.input = new Scanner(System.in);
         this.currentUser = null;
+
+
 
     }
 
@@ -62,8 +66,8 @@ public class  HkController {
                             break;
 
                         case 7:
-                            //visalleoplysningeromAllehold();
-                            printInfo();
+                            visalleoplysningeromAllehold();
+//                            printInfo();
                             break;
 
                         case 8:
@@ -77,68 +81,87 @@ public class  HkController {
 
 
             } else {
-                System.out.println("\nDu har indtastet forkert brugernavn eller password");
+                System.out.println("\nDu har indtastet forkert brugernavn");
             }
         }
     }
 
     private void indberetOplysninger() {
 
-        int antalkørtekilometer;
-        int antalkørtedage;
-        int i = currentUser.getAntalkørtedage();
-        int a = currentUser.getAntalkørtekilometer();
+        int antalkørtekilometer, antalkørtedage;
 
-        System.out.println("Indtast antal kørte kilometer:");
+        System.out.println("Indtast antal kilometer");
         antalkørtekilometer = input.nextInt();
-        a += antalkørtekilometer;
-        currentUser.setAntalkørtekilometer(a);
 
-        System.out.println("Indtast antal kørselsdage:");
+        System.out.println("Indtast antal kørselsdage");
         antalkørtedage = input.nextInt();
-        //currentUser.setAntalkørtekilometer(antalkørtekilometer);
-        i += antalkørtedage;
-        currentUser.setAntalkørtedage(i);
 
-        System.out.println("Du har indtastet følgende oplysninger:\nKilometer: " + currentUser.getAntalkørtekilometer() + "\nAntal kørselsdage: " + currentUser.getAntalkørtedage());
+        System.out.println(antalkørtekilometer + " " + antalkørtedage);
+
+        CykelTur cykelTur = new CykelTur(antalkørtekilometer, antalkørtedage);
+        currentUser.addcykeltur(cykelTur);
+
+//        int antalkørtekilometer;
+//        int antalkørtedage;
+//        int i = currentCykeltur.getAntalkørtedage();
+//        int a = currentCykeltur.getAntalkørtekilometer();
+//
+//
+//        System.out.println("Indtast antal kørte kilometer:");
+//        antalkørtekilometer = input.nextInt();
+//        a += antalkørtekilometer;
+//        currentCykeltur.setAntalkørtekilometer(a);
+//
+//        System.out.println("Indtast antal kørselsdage:");
+//        antalkørtedage = input.nextInt();
+//        //currentUser.setAntalkørtekilometer(antalkørtekilometer);
+//        i += antalkørtedage;
+//        currentCykeltur.setAntalkørtedage(i);
+//
+//        System.out.println("Du har indtastet følgende oplysninger:\nKilometer: " + currentCykeltur.getAntalkørtekilometer() + "\nAntal kørselsdage: " + currentCykeltur.getAntalkørtedage());
 
     }
 
     private void ændreindberettedeOplysninger() { }
 
-    private void sletOplysninger() { }
+
+    private void sletOplysninger() {
+        int i = 1;
+        //Tjek om der findes bøger
+        if (currentUser.getCykelturliste().size() == 0) {
+            System.out.println("Du har ingen indtastede cykelture");
+        } else {
+            System.out.println("Dine Cykelture er: ");
+
+            // Header i bogvisning
+            System.out.printf("%-10s %-40s %-30s \n", "Nr.", "Cykelturens antal kørte kilometer:", "Cykelturens antal kørte dage:");
+            for (CykelTur cykeltur : currentUser.getCykelturliste()) {
+                System.out.printf("%-10d %-40d %-30d \n", i, cykeltur.getAntalkørtekilometer(), cykeltur.getAntalkørtedage());
+                i++;
+
+            }
+        }
+    }
 
     private void oplysningerpåenDeltager() {
 
-        currentUser.printInfo();
+        System.out.println("\n1)Deltagerens navn: " + currentUser.getName() +  "\n3)Brugerens hold: "
+                + currentTeams.getTeamID() + "\n4)Brugerens indtastede kilometer: " + currentCykeltur.getAntalkørtekilometer() + "\n5)Brugerens indtastede antal kørte dage: " + currentCykeltur.getAntalkørtedage());
 
     }
 
     private void oplysningerpåegetHold() {
 
-        for(Teams teams: db.getTeam()){ // alle hold
-            for(User user: teams.getholdmedlemmer()){ // alle holdmedlemmer på hvert hold
-                if(user.equals(currentUser)){ // tjekker om alle brugere i listen, er tilknyttet det samme hold id som curremtuser
-                   for(User u:teams.getholdmedlemmer()){ // hvis det er det samme hold-Id som brugere, printes alle holdmedlemmer ud for holdet
-                       u.printInfo(); //kalder på metoden
-                   }
-                }
-
-            }
-        }
-
-
     }
-
-
 
     private void statistikpåKmogkørselsdage() { }
 
     private void visalleoplysningeromAllehold() {
-        Data data = new Data();
-        ArrayList<User> users = data.getUsers();
-
-        System.out.println("\nDeltager: " + data.getUsers());
+//        for(int i = 0; i<db.getUsers().size(); i++){
+//
+//            System.out.println("Navn: " + db.getUsers().get(i).getName() + "Kørte km" + db.get;
+//        }
+//
     }
 
     private void logUd() {
@@ -152,12 +175,12 @@ public class  HkController {
         int valg;
         System.out.println("");
         System.out.println("Holdkaptajn Menu:");
-        System.out.println("1) Indberetning af cykelture");
-        System.out.println("2) Ændre indberettede cykelture");
-        System.out.println("3) Slet indberettede cykelture ");
+        System.out.println("1) Indberetning af oplysninger om antal cyklede kilometer ");
+        System.out.println("2) Ændre indberettede oplysninger");
+        System.out.println("3) Slet indberettede oplysninger ");
         System.out.println("4) Vis alle oplysninger om en deltager");
         System.out.println("5) Vis alle oplysninger om eget hold");
-        System.out.println("6) Vis en statistik over cykelture på bruger og hold");
+        System.out.println("6) Vis en statistik over fordelingen af antal km og kørselsdage på hold");
         System.out.println("7) Vis alle oplysninger om alle hold");
         System.out.println("8) Log ud af systemet");
         System.out.println("vælg et menupunkt: ");
@@ -175,15 +198,13 @@ public class  HkController {
         return false;
     }
 
-    public void printInfo(){
-        for(int i = 0; i<db.getUsers().size(); i++){
+//    public void printInfo(){
+//        for(int i = 0; i<db.getUsers().size(); i++){
+//
+//            System.out.println(db.getUsers().get(i).getUsername());
+//            System.out.println("Har kørt: " + db.getUsers().get(i).getAntalkørtekilometer() + );
 
-            System.out.println(db.getUsers().get(i).getUsername());
-            System.out.println("Har kørt: " + db.getUsers().get(i).getAntalkørtekilometer() + );
 
-
-        }
+//        }
     }
-}
-
 

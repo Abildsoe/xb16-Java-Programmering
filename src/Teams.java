@@ -5,13 +5,14 @@ public class Teams {
     private String teamID;
     private String teamName;
     private String teamLeader;
-    ArrayList<User> holdmedlemmer = new ArrayList<>();
+    private ArrayList<User> users = new ArrayList<>();
 
-    public Teams(String teamID, String teamNamee, String teamLeader){
+    public Teams(String teamID, String teamName, String teamLeader){
 
         this.teamID = teamID;
         this.teamName=teamName;
         this.teamLeader=teamLeader;
+        this.users=new ArrayList<>();
 
     }
     //Her laves get og set metoder for "teamid"
@@ -25,8 +26,6 @@ public class Teams {
     // Her laves get og set metoder for "teamleader"
     public String getTeamLeader(){return teamLeader;}
     public void setTeamLeader(){this.teamLeader=teamLeader;}
-
-    public ArrayList<User> getholdmedlemmer() {return holdmedlemmer;}
 
 
 }
