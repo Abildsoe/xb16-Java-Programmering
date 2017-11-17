@@ -63,7 +63,7 @@ public class HkController {
 
                         case 7:
                             //visalleoplysningeromAllehold();
-                            printInfo();
+                            visalleoplysningeromAllehold();
                             break;
 
                         case 8:
@@ -108,18 +108,18 @@ public class HkController {
 
     private void sletOplysninger() { }
 
-    private void oplysningerpåenDeltager() {
+    //private void oplysningerpåenDeltager() {
 
-        System.out.println("\n1)Deltager: " + currentUser.getUsername() + "\n2)Brugertype:" + currentUser.getType() + "\n3)Brugerens hold: "
-                + currentUser.getHoldid() + "\n4)Brugerens indtastede kilometer: " + currentUser.getAntalkørtekilometer() + "\n5)Brugerens indtastede antal kørte dage: " + currentUser.getAntalkørtedage());
+    //    System.out.println("\n1)Deltager: " + currentUser.getUsername() + "\n2)Brugertype:" + currentUser.getType() + "\n3)Brugerens hold: "
+    //            + currentUser.getHoldid() + "\n4)Brugerens indtastede kilometer: " + currentUser.getAntalkørtekilometer() + "\n5)Brugerens indtastede antal kørte dage: " + currentUser.getAntalkørtedage());
 
-    }
+    //}
 
     private void oplysningerpåegetHold() { }
 
     private void statistikpåKmogkørselsdage() { }
 
-    private void visalleoplysningeromAllehold() {
+    public void visalleoplysningeromAllehold() {
         Data data = new Data();
         ArrayList<User> users = data.getUsers();
 
@@ -160,15 +160,15 @@ public class HkController {
         return false;
     }
 
-    public void printInfo(){
-        for(int i = 0; i<db.getUsers().size(); i++){
+    //public void printInfo(){
+    //    for(int i = 0; i<db.getUsers().size(); i++){
 
-            System.out.println(db.getUsers().get(i).getUsername());
-            System.out.println("Har kørt: " + db.getUsers().get(i).getAntalkørtekilometer() + );
+    //           System.out.println(db.getUsers().get(i).getUsername());
+    //        System.out.println("Har kørt: " + db.getUsers().get(i).getAntalkørtekilometer() + );
 
 
         }
-    }
-}
+    //}
+//}
 
 
