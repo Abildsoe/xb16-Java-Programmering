@@ -77,7 +77,7 @@ public class HkController {
 
 
             } else {
-                System.out.println("\nDu har indtastet forkert brugernavn");
+                System.out.println("\nDu har indtastet forkert brugernavn eller password");
             }
         }
     }
@@ -137,12 +137,12 @@ public class HkController {
         int valg;
         System.out.println("");
         System.out.println("Holdkaptajn Menu:");
-        System.out.println("1) Indberetning af oplysninger om antal cyklede kilometer ");
-        System.out.println("2) Ændre indberettede oplysninger");
-        System.out.println("3) Slet indberettede oplysninger ");
+        System.out.println("1) Indberetning af cykelture");
+        System.out.println("2) Ændre indberettede cykelture");
+        System.out.println("3) Slet indberettede cykelture ");
         System.out.println("4) Vis alle oplysninger om en deltager");
         System.out.println("5) Vis alle oplysninger om eget hold");
-        System.out.println("6) Vis en statistik over fordelingen af antal km og kørselsdage på hold");
+        System.out.println("6) Vis en statistik over cykelture på bruger og hold");
         System.out.println("7) Vis alle oplysninger om alle hold");
         System.out.println("8) Log ud af systemet");
         System.out.println("vælg et menupunkt: ");
