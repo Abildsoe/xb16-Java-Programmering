@@ -1,14 +1,18 @@
+import java.util.ArrayList;
+
 public class Teams {
 
     private String teamID;
     private String teamName;
     private String teamLeader;
+    private ArrayList<User> users = new ArrayList<>();
 
-    public Teams(String teamID, String teamNamee, String teamLeader){
+    public Teams(String teamID, String teamName, String teamLeader){
 
         this.teamID = teamID;
         this.teamName=teamName;
         this.teamLeader=teamLeader;
+        this.users=new ArrayList<>();
 
     }
     //Her laves get og set metoder for "teamid"

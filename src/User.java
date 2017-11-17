@@ -4,23 +4,28 @@ public class User {
     private String username;
     private int password;
     private String name;
-private ArrayList<CykelTur>cykelturliste=new ArrayList<>();
-    ArrayList<Teams> teams = new ArrayList<>();
-    Data db;
+    private int type;
+    private ArrayList<CykelTur>cykelturliste=new ArrayList<>();
+//    private Data db;
 
 
 
-    public User(String username, int password, String name) {
+    public User(String username, int password, String name, int type) {
         this.username = username;
         this.password = password;
         this.name=name;
+        this.type=type;
         this.cykelturliste=new ArrayList<>();
+// this.db=db;
+
+
 
     }
+    public void addcykeltur(CykelTur cykelTur){
+        cykelturliste.add(cykelTur);
 
-    public void addCykelture(CykelTur cykeltur) {
-        cykelturliste.add(cykeltur);
     }
+    // Her laves get og set metoder for "username"
 
     public String getUsername() {
         return username;
@@ -30,7 +35,7 @@ private ArrayList<CykelTur>cykelturliste=new ArrayList<>();
         this.username = username;
     }
 
-
+// Her laves get og set metoder for "password"
     public int getPassword() {
         return password;
     }
@@ -45,17 +50,17 @@ private ArrayList<CykelTur>cykelturliste=new ArrayList<>();
     public void setname(){this.name=name;}
 
 
+//
+    public int getType(){return type;}
+    public void setType(){this.type=type;}
 
 
 
 
 
-
-    public ArrayList<Teams> getTeams() { return teams; }
-
-
-
-
+    public ArrayList<CykelTur> getCykelturliste() {
+        return cykelturliste;
+    }
 }
 
 
