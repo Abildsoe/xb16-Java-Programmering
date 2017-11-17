@@ -1,8 +1,11 @@
+import java.util.ArrayList;
+
 public class Teams {
 
     private String teamID;
     private String teamName;
     private String teamLeader;
+    ArrayList<User> holdmedlemmer = new ArrayList<>();
 
     public Teams(String teamID, String teamNamee, String teamLeader){
 
@@ -22,6 +25,8 @@ public class Teams {
     // Her laves get og set metoder for "teamleader"
     public String getTeamLeader(){return teamLeader;}
     public void setTeamLeader(){this.teamLeader=teamLeader;}
+
+    public ArrayList<User> getholdmedlemmer() {return holdmedlemmer;}
 
 
 }

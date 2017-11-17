@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class HkController {
+public class  HkController {
     private Data db;
     private Scanner input;
     private User currentUser;
@@ -110,12 +110,27 @@ public class HkController {
 
     private void oplysningerpåenDeltager() {
 
-        System.out.println("\n1)Deltager: " + currentUser.getUsername() + "\n2)Brugertype:" + currentUser.getType() + "\n3)Brugerens hold: "
-                + currentUser.getHoldid() + "\n4)Brugerens indtastede kilometer: " + currentUser.getAntalkørtekilometer() + "\n5)Brugerens indtastede antal kørte dage: " + currentUser.getAntalkørtedage());
+        currentUser.printInfo();
 
     }
 
-    private void oplysningerpåegetHold() { }
+    private void oplysningerpåegetHold() {
+
+        for(Teams teams: db.getTeam()){ // alle hold
+            for(User user: teams.getholdmedlemmer()){ // alle holdmedlemmer på hvert hold
+                if(user.equals(currentUser)){ // tjekker om alle brugere i listen, er tilknyttet det samme hold id som curremtuser
+                   for(User u:teams.getholdmedlemmer()){ // hvis det er det samme hold-Id som brugere, printes alle holdmedlemmer ud for holdet
+                       u.printInfo(); //kalder på metoden
+                   }
+                }
+
+            }
+        }
+
+
+    }
+
+
 
     private void statistikpåKmogkørselsdage() { }
 

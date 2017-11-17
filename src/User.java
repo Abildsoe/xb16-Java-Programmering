@@ -3,16 +3,17 @@ import java.util.ArrayList;
 public class User {
     private String username;
     private int password;
+    private int type;
     private String name;
-private ArrayList<CykelTur>cykelturliste=new ArrayList<>();
+
     ArrayList<Teams> teams = new ArrayList<>();
     Data db;
 
 
-
-    public User(String username, int password, String name) {
+    public User(String username, int password, int type, String name, String holdid, int antalkørtekilometer, int antalkørtedage) {
         this.username = username;
         this.password = password;
+        this.type = type;
         this.name=name;
         this.cykelturliste=new ArrayList<>();
 
@@ -40,21 +41,26 @@ private ArrayList<CykelTur>cykelturliste=new ArrayList<>();
     }
 
 
+    public int getType() {
+        return type;
+    }
+
+    public void setType() {
+        this.type = type;
+    }
+
     // Her laves get og set metoder for "name"
     public String getName(){return name;}
     public void setname(){this.name=name;}
 
-
-
-
-
-
-
-
-    public ArrayList<Teams> getTeams() { return teams; }
-
-
-
+   public void printInfo(){
+       System.out.println("\n1)Deltager: " + currentUser.getUsername() + "\n2)Brugertype:" + currentUser.getType() +
+               "\n3)Brugerens hold: "
+               + currentUser.getHoldid() +
+               "\n4)Brugerens indtastede kilometer: "
+               + currentUser.getAntalkørtekilometer() +
+               "\n5)Brugerens indtastede antal kørte dage: " + currentUser.getAntalkørtedage());
+   }
 
 }
 
