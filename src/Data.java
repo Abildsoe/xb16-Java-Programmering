@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class Data {
     private ArrayList<User> users = new ArrayList<>();
-    private ArrayList<Teams> teams = new ArrayList<>();
     Scanner input = new Scanner(System.in);
     User user;
 
@@ -120,10 +119,5 @@ public class Data {
     public ArrayList<User> getUsers() {
         return users;
     }
-
-    public ArrayList<Teams> getTeam() {return teams;}
-
-
-    }
-
+}
 
