@@ -1,16 +1,18 @@
+package model;
+
 import java.util.ArrayList;
 
 public class CykelTur {
 
     private int antalkørtekilometer;
     private int antalkørtedage;
-    private ArrayList<CykelTur> cykelturliste=new ArrayList<>();
+    private ArrayList<CykelTur> cykelturliste = new ArrayList<>();
 
 
     public CykelTur(int antalkørtekilometer, int antalkørtedage) {
         this.antalkørtekilometer = antalkørtekilometer;
         this.antalkørtedage = antalkørtedage;
-        this.cykelturliste=new ArrayList<>();
+        this.cykelturliste = new ArrayList<>();
     }
 
 
@@ -32,5 +34,7 @@ public class CykelTur {
         this.antalkørtedage = antalkørtedage;
     }
 
-    public ArrayList<CykelTur> getCykelturliste() { return cykelturliste; }
+    public ArrayList<CykelTur> getCykelturliste() {
+        return cykelturliste;
+    }
 }
