@@ -4,7 +4,7 @@ package controllers;
 import java.util.Scanner;
 
 public class InputController {
-    private Scanner input;
+    Scanner input = new Scanner(System.in);
 
     public InputController() {
         this.input = new Scanner(System.in);

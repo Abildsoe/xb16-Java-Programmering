@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+import model.User;
+
 public class CykelTur {
 
     private int antalkørtekilometer;
@@ -37,4 +39,6 @@ public class CykelTur {
     public ArrayList<CykelTur> getCykelturliste() {
         return cykelturliste;
     }
+
+
 }

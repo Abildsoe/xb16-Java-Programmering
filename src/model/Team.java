@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 public class Team {
 
-    ArrayList<User> users = new ArrayList<>();
+    private ArrayList<User> users = new ArrayList<>();
     private int teamID;
     private String teamName;
     private String teamLeader;
+
 
     public Team(int teamID, String teamName, String teamLeader) {
 
@@ -15,6 +16,10 @@ public class Team {
         this.teamName = teamName;
         this.teamLeader = teamLeader;
         this.users = new ArrayList<>();
+    }
+
+    public void addusers(User user) {
+        users.add(user);
 
     }
 

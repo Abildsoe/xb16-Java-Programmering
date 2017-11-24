@@ -1,6 +1,8 @@
 package controllers;
 
 import data.Data;
+import model.CykelTur;
+import model.Team;
 import model.User;
 
 public class LeaderController extends MemberController {
@@ -12,15 +14,25 @@ public class LeaderController extends MemberController {
 
 
     public void visalleoplysningeromAllehold() {
-//        for(int i = 0; i<db.getUsers().size(); i++){
-//
-//            System.out.println("Navn: " + db.getUsers().get(i).getName() + "Kørte km" + db.get;
-//        }
-//
+
+        System.out.printf("%-10s %-25s %-20s %-25s %-30s %-5s\n", "HoldID", "Holdnavn", "Holdleder", "Medlem", "Antal kørte Dage", "Antal kørte Kilometer");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------");
+        for (Team team : this.data.getTeams()) {
+
+            for (User user : team.getUsers()) {
+                System.out.printf("%-10s %-25s %-20s %-25s %-30s %-5s\n", team.getTeamID(), team.getTeamName(), team.getTeamLeader(), user.getName(), user.getCykelturDagesum(), user.getCykelturKMSum());
+//                for (CykelTur cl : user.getCykelturliste()) {
+//                    System.out.printf("%-10s %-25s %-20s %-25s %-30s %-5s\n", team.getTeamID(), team.getTeamName(), team.getTeamLeader(), user.getName(), cl.getAntalkørtedage(), cl.getAntalkørtekilometer());
+            }
+            System.out.println("----------------------------------------------------------------------------------------------------------------------------------------");
+        }
     }
 
 
+
+
     public void showUserMenu() {
+
         int valg;
         System.out.println("");
         System.out.println("Holdkaptajnmenu:");
@@ -33,16 +45,7 @@ public class LeaderController extends MemberController {
         System.out.println("7) Vis alle oplysninger om alle hold");
         System.out.println("8) Log ud af systemet");
         System.out.println("vælg et menupunkt: ");
+
     }
-
-
-//    public void printInfo(){
-//        for(int i = 0; i<db.getUsers().size(); i++){
-//
-//            System.out.println(db.getUsers().get(i).getUsername());
-//            System.out.println("Har kørt: " + db.getUsers().get(i).getAntalkørtekilometer() + );
-
-
-//        }
 }
 

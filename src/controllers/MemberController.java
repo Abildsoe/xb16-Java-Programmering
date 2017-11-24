@@ -2,6 +2,7 @@ package controllers;
 
 import data.Data;
 import model.CykelTur;
+import model.Team;
 import model.Tuple;
 import model.User;
 
@@ -10,8 +11,8 @@ import java.util.ArrayList;
 public class MemberController {
 
     InputController inputCtrl;
-    private User currentUser;
-    private Data data;
+    protected User currentUser;
+    protected Data data;
 
     public MemberController(User currentUser, InputController inputCtrl, Data data) {
         this.currentUser = currentUser;
@@ -48,26 +49,6 @@ public class MemberController {
 
         CykelTur cykelTur = new CykelTur(antalkørtekilometer, antalkørtedage);
         this.currentUser.addcykeltur(cykelTur);
-
-//        int antalkørtekilometer;
-//        int antalkørtedage;
-//        int i = currentCykeltur.getAntalkørtedage();
-//        int a = currentCykeltur.getAntalkørtekilometer();
-//
-//
-//        System.out.println("Indtast antal kørte kilometer:");
-//        antalkørtekilometer = input.nextInt();
-//        a += antalkørtekilometer;
-//        currentCykeltur.setAntalkørtekilometer(a);
-//
-//        System.out.println("Indtast antal kørselsdage:");
-//        antalkørtedage = input.nextInt();
-//        //currentUser.setAntalkørtekilometer(antalkørtekilometer);
-//        i += antalkørtedage;
-//        currentCykeltur.setAntalkørtedage(i);
-//
-//        System.out.println("Du har indtastet følgende oplysninger:\nKilometer: " + currentCykeltur.getAntalkørtekilometer() + "\nAntal kørselsdage: " + currentCykeltur.getAntalkørtedage());
-
     }
 
     public void ændreindberettedeOplysninger() {
@@ -76,37 +57,42 @@ public class MemberController {
 
     public void sletOplysninger() {
         int i = 1;
-        //Tjek om der findes bøger
+        //Tjek om der findes cykelturer
         if (currentUser.getCykelturliste().size() == 0) {
             System.out.println("Du har ingen indtastede cykelture");
         } else {
             System.out.println("Dine Cykelture er: ");
 
-            // Header i bogvisning
-            System.out.printf("%-10s %-40s %-30s \n", "Nr.", "Cykelturens antal kørte kilometer:", "Cykelturens antal kørte dage:");
+            // Header i cykelturlisten
+            System.out.printf("%-10s %-40s %-30s", "Nr.", "Cykelturens antal kørte kilometer:", "Cykelturens antal kørte dage:");
             for (CykelTur cykeltur : currentUser.getCykelturliste()) {
-                System.out.printf("%-10d %-40d %-30d \n", i, cykeltur.getAntalkørtekilometer(), cykeltur.getAntalkørtedage());
+                System.out.printf("%-10s %-40s %-30s \n", i, cykeltur.getAntalkørtekilometer(), cykeltur.getAntalkørtedage());
                 i++;
-                System.out.println();
 
             }
         }
     }
 
     public void oplysningerpåenDeltager() {
-        int antalkørtedage = 0;
-        int antalkm = 0;
-        for (CykelTur ct : currentUser.getCykelturliste()) {
-            antalkm += ct.getAntalkørtekilometer();
-            antalkørtedage += ct.getAntalkørtedage();
-        }
-        System.out.println("\n1)Deltagerens navn: " + currentUser.getName() + "\n3)Brugerens hold: "
-                + currentUser.getTeam().getTeamName() + "\n4)Brugerens indtastede kilometer: " + antalkm + "\n5)Brugerens indtastede antal kørte dage: " + antalkørtedage);
+
+        currentUser.printInfo();
 
     }
 
     public void oplysningerpåegetHold() {
+        int i = 0;
+        for (Team team : this.data.getTeams()) { // alle hold
+            for (User user : team.getUsers()) {// alle holdmedlemmer på hvert hold
+                if (user.equals(currentUser)) { // tjekker om alle brugere i listen, er tilknyttet det samme hold id som currentuser
 
+                    System.out.println(team.getTeamName());
+
+                    for (User member : team.getUsers()) {
+                        System.out.println(member.getName());
+                    }
+                }
+            }
+        }
     }
 
     /* Created by Ahilan Selliah 18/11/2017
@@ -132,7 +118,6 @@ public class MemberController {
                 System.out.println();
             }
         }
-
     }
 
     private Tuple<Double, Double> GennemsnitForBruger(User user) {
@@ -151,5 +136,4 @@ public class MemberController {
         }
         return new Tuple<>(gennemsnitkørtekmprdag, gennemsnitkørtekmprtur);
     }
-
 }
