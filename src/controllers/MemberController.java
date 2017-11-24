@@ -137,6 +137,3 @@ public class MemberController {
         return new Tuple<>(gennemsnitkørtekmprdag, gennemsnitkørtekmprtur);
     }
 }
-
-
-sdfsdf
