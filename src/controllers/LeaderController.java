@@ -18,16 +18,17 @@ public class LeaderController extends MemberController {
         System.out.printf("%-10s %-25s %-20s %-25s %-30s %-5s\n", "HoldID", "Holdnavn", "Holdleder", "Medlem", "Antal kørte Dage", "Antal kørte Kilometer");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------");
         for (Team team : this.data.getTeams()) {
-
+            System.out.println("Id: " + team.getTeamID());
+            System.out.println("Holdnavn: " + team.getTeamName());
             for (User user : team.getUsers()) {
-                System.out.printf("%-10s %-25s %-20s %-25s %-30s %-5s\n", team.getTeamID(), team.getTeamName(), team.getTeamLeader(), user.getName(), user.getCykelturDagesum(), user.getCykelturKMSum());
-//                for (CykelTur cl : user.getCykelturliste()) {
-//                    System.out.printf("%-10s %-25s %-20s %-25s %-30s %-5s\n", team.getTeamID(), team.getTeamName(), team.getTeamLeader(), user.getName(), cl.getAntalkørtedage(), cl.getAntalkørtekilometer());
+//                System.out.printf("%-10s %-25s %-20s %-25s %-30s %-5s\n", team.getTeamID(), team.getTeamName(), team.getTeamLeader(), user.getName(), user.getCykelturDagesum(), user.getCykelturKMSum());
+                for (CykelTur cl : user.getCykelturliste()) {
+                    System.out.printf("%-10s %-25s %-20s %-25s %-30s %-5s\n", team.getTeamID(), team.getTeamName(), team.getTeamLeader(), user.getName(), cl.getAntalkørtedage(), cl.getAntalkørtekilometer());
             }
             System.out.println("----------------------------------------------------------------------------------------------------------------------------------------");
         }
     }
-
+}
 
 
 
