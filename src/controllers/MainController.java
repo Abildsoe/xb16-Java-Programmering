@@ -52,15 +52,15 @@ public class MainController {
                         switch (valg) {
 
                             case 1:
-                                userCtrl.indberetOplysninger();
+                                userCtrl.reportinformation();
                                 break;
 
                             case 2:
-                                userCtrl.ændreindberettedeOplysninger();
+                                userCtrl.changereportedinformation();
                                 break;
 
                             case 3:
-                                userCtrl.sletOplysninger();
+                                userCtrl.deleteinformation();
                                 break;
 
                             case 4:
@@ -72,14 +72,14 @@ public class MainController {
                                 break;
 
                             case 6:
-                                userCtrl.statistikpåKmogkørselsdage();
+                                userCtrl.statisticsonkilometersanddays();
                                 break;
 
                             case 7:
                                 if (currentUser.getType() != UserType.Holdkaptajn) {
                                     System.out.println("Ugyldigt valg");
                                 } else {
-                                    ((LeaderController) userCtrl).visalleoplysningeromAllehold();
+                                    ((LeaderController) userCtrl).showallinformationaboutEveryTeam();
                                 }
                                 break;
 
@@ -135,7 +135,7 @@ public class MainController {
             }
         }
 
-        User ny = new User(username, password, navn, UserType.User, team);
+        User ny = new User(username, password, navn, UserType.User);
         db.getUsers().add(ny);
         System.out.println("Brugeren er oprettet, velkommen!");
     }

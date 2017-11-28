@@ -1,7 +1,7 @@
 package controllers;
 
 import data.Data;
-import model.CykelTur;
+import model.Cycleweek;
 import model.Team;
 import model.User;
 
@@ -13,19 +13,21 @@ public class LeaderController extends MemberController {
     }
 
 
-    public void visalleoplysningeromAllehold() {
+    public void showallinformationaboutEveryTeam() {
 
-        System.out.printf("%-10s %-25s %-20s %-25s %-30s %-5s\n", "HoldID", "Holdnavn", "Holdleder", "Medlem", "Antal kørte Dage", "Antal kørte Kilometer");
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("%-30s %-30s %-10s", "Hold information", "Kørt distance på en uge", "Ugenummer\n");
+        System.out.println("______________________________________________________________________");
         for (Team team : this.data.getTeams()) {
-            System.out.println("Id: " + team.getTeamID());
+            System.out.println("HoldID: " + team.getTeamName());
             System.out.println("Holdnavn: " + team.getTeamName());
+            System.out.println("HoldLeder: " + team.getTeamLeader());
+            System.out.println("----------------------------------------------------------------------");
             for (User user : team.getUsers()) {
-//                System.out.printf("%-10s %-25s %-20s %-25s %-30s %-5s\n", team.getTeamID(), team.getTeamName(), team.getTeamLeader(), user.getName(), user.getCykelturDagesum(), user.getCykelturKMSum());
-                for (CykelTur cl : user.getCykelturliste()) {
-                    System.out.printf("%-10s %-25s %-20s %-25s %-30s %-5s\n", team.getTeamID(), team.getTeamName(), team.getTeamLeader(), user.getName(), cl.getAntalkørtedage(), cl.getAntalkørtekilometer());
+
+                for (Cycleweek cl : user.getCycleweeklist()) {
+                    System.out.printf("%-30s %-30s %-10s\n", user.getName(), cl.getKilometersdriven(), cl.getWeeknumber());
             }
-            System.out.println("----------------------------------------------------------------------------------------------------------------------------------------");
+            System.out.println("----------------------------------------------------------------------");
         }
     }
 }
