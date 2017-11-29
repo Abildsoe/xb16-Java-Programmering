@@ -1,6 +1,6 @@
 package model;
 
-
+import data.Data;
 import java.util.ArrayList;
 
 public class User {
@@ -10,6 +10,7 @@ public class User {
     private UserType type;
     private ArrayList<Cycleweek> cycleweeklist  = new ArrayList<>();
     private Team team;
+    private Data data;
 
 
     public User(String username, int password, String name, UserType type) {
@@ -19,6 +20,7 @@ public class User {
         this.type = type;
         this.cycleweeklist  = new ArrayList<>();
         this.team=team;
+        this.data=data;
 
     }
 
@@ -54,7 +56,6 @@ public class User {
     public Team getTeam() {
         return team;
     }
-
 
 
 // Her oprettes get for "Cykelturliste"
