@@ -2,6 +2,7 @@ package model;
 
 import data.Data;
 import java.util.ArrayList;
+import model.Cycleweek;
 
 public class User {
     private String username;
@@ -80,5 +81,18 @@ public class User {
 //                + currentUser.getCykelturliste().get(0).getKilometersdriven() +
 //                "\n5)Brugerens indtastede antal kørte dage: " + currentUser.getCykelturliste().get(0).getAntalkørtedage());
 //    }
+    }
+
+    public int getTotalDistance(){
+
+        int totalDistance=0;
+
+
+        for (Cycleweek cycleweek : cycleweeklist) {
+
+            totalDistance += cycleweek.getKilometersdriven();
+
+        }
+        return totalDistance;
     }
 }

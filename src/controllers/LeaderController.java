@@ -14,40 +14,41 @@ public class LeaderController extends MemberController {
 
 
     public void showallinformationaboutEveryTeam() {
+        int sumOfKMdriven = 0;
         for (Team team : this.data.getTeams()) {
             System.out.println();
-            System.out.println("HoldID: " + team.getTeamName());
             System.out.println("Holdnavn: " + team.getTeamName());
             System.out.println("HoldLeder: " + team.getTeamLeader());
             System.out.println();
-            System.out.printf("%-30s %-20s %-20s %-20s", "Navn på hold deltager", "Ugenummer", "Kørte dage", "Kørt distance på denne uge\n");
-            System.out.println("---------------------------------------------------------------------------------------------------");
+            System.out.printf("%-30s %-20s %-20s %-30s %-10s", "Navn på hold deltager", "Ugenummer", "Kørte dage", "Kørt distance for given uge", "Total kørt distance\n");
+            System.out.println("---------------------------------------------------------------------------------------------------------------------------");
             for (User user : team.getUsers()) {
 
                 for (Cycleweek cl : user.getCycleweeklist()) {
-                    System.out.printf("%-30s %-20s %-20s %-10s %-10s\n", user.getName(), cl.getWeeknumber(), cl.getDaysdriven(), cl.getKilometersdriven(), getSumOfKMdriven());
+                    // sumOfKMdriven += cl.getKilometersdriven();
+                    System.out.printf("%-30s %-20s %-20s %-30s %-10s\n", user.getName(), cl.getWeeknumber(), cl.getDaysdriven(), cl.getKilometersdriven(), "-");
                 }
-                System.out.println("---------------------------------------------------------------------------------------------------");
+                System.out.printf("%-30s %-20s %-20s %-30s %-10s\n", "", "", "", "", user.getTotalDistance());
+                System.out.println("---------------------------------------------------------------------------------------------------------------------------");
             }
         }
     }
 
-    public int sumOfKMdriven() {
-        int sumOfKMdriven = 0;
-        for (Team team : data.getTeams()){
-            for (User user : team.getUsers()) {
-                for (Cycleweek cl : user.getCycleweeklist()) {
-                    sumOfKMdriven += cl.getKilometersdriven();
-                    System.out.println(cl.getKilometersdriven());
-                }
-            }
-        }
-        return sumOfKMdriven;
-    }
+//    public int sumOfKMdriven() {
+//        int sumOfKMdriven = 0;
+//        for (Team team : data.getTeams()){
+//            for (User user : team.getUsers()) {
+//                for (Cycleweek cl : user.getCycleweeklist()) {
+//                    sumOfKMdriven += cl.getKilometersdriven();
+//                }
+//            }
+//        }
+//        return sumOfKMdriven;
+//    }
 
-    public int getSumOfKMdriven() {
-        return sumOfKMdriven();
-    }
+//    public int getSumOfKMdriven() {
+//        return sumOfKMdriven();
+//    }
 
 
 
