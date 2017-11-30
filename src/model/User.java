@@ -64,24 +64,6 @@ public class User {
         return cycleweeklist;
     }
 
-    public void printInfo() {
-//        System.out.println("\n1)Deltager: " + currentUser.getUsername() + "\n2)Brugertype:" + currentUser.getType() +
-//                "\n3)Brugerens hold: "
-//                + currentUser.getTeam().getTeamID() +
-//                "\n4)Brugerens indtastede kilometer: "
-//                + currentUser.getCykelturliste().get(0).getKilometersdriven() +
-//                "\n5)Brugerens indtastede antal kørte dage: " + currentUser.getCykelturliste().get(0).getAntalkørtedage());
-//    }
-
-//    public void printInfo() {
-//        System.out.println("\n1)Deltager: " + .getUsername() + "\n2)Brugertype:" + currentUser.getType() +
-//                "\n3)Brugerens hold: "
-//                + User.getTeam().getTeamID() +
-//                "\n4)Brugerens indtastede kilometer: "
-//                + currentUser.getCykelturliste().get(0).getKilometersdriven() +
-//                "\n5)Brugerens indtastede antal kørte dage: " + currentUser.getCykelturliste().get(0).getAntalkørtedage());
-//    }
-    }
 
     public int getTotalDistance(){
 

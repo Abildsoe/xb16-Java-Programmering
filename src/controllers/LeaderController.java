@@ -12,6 +12,7 @@ public class LeaderController extends MemberController {
         super(currentUser, inputCtrl, data);
     }
 
+    //https://stackoverflow.com/questions/16242733/sum-all-the-elements-java-arraylist
 
     public void showallinformationaboutEveryTeam() {
         int sumOfKMdriven = 0;
