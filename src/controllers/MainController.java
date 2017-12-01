@@ -63,12 +63,9 @@ public class MainController {
                                 userCtrl.deleteinformation();
                                 break;
 
-                            case 4:
-                                userCtrl.oplysningerpåenDeltager();
-                                break;
 
                             case 5:
-                                userCtrl.oplysningerpåegetHold();
+                                userCtrl.showInformationAboutOwnTeam();
                                 break;
 
                             case 6:
