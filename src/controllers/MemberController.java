@@ -5,10 +5,12 @@ import model.Cycleweek;
 import model.Team;
 import model.Tuple;
 import model.User;
+import java.util.Scanner;
 
 import java.util.ArrayList;
 
 public class MemberController {
+    Scanner input=new Scanner(System.in);
 
     InputController inputCtrl;
     protected User currentUser;
@@ -20,7 +22,7 @@ public class MemberController {
         this.data = data;
     }
 
-
+// Her oprettes "User menuen"
     public void showUserMenu() {
 
         System.out.println("Brugermenu:");
@@ -35,24 +37,27 @@ public class MemberController {
     }
 
     public void reportinformation() {
-
-        int antalkørtekilometer, antalkørselsdage,ugenummer;
-
+//Her defineres de forskellige variabler
+        int daysdriven,weeknumber;
+        double kilometersdriven;
+//Her indtastes en double værdi af "antal kilometer"
         System.out.println("Indtast antal kilometer");
-        antalkørtekilometer = inputCtrl.læsInputSomInt();
-
+        kilometersdriven = input.nextDouble();
+//Her indtastes en int værdi, som referer tilbage til vores inputcontroller hvor der laves "try" "catch" for at undgå fejl
         System.out.println("Indtast antal kørselsdage");
-        antalkørselsdage = inputCtrl.læsInputSomInt();
+        daysdriven = inputCtrl.læsInputSomInt();
 
+//Her indtastes en int værdi, som referer tilbage til vores inputcontroller hvor der laves "try" "catch" for at undgå fejl
         System.out.println("Indtast ugenummer for indberettede data");
-        ugenummer=inputCtrl.læsInputSomInt();
+        weeknumber=inputCtrl.læsInputSomInt();
 
         System.out.println("_________________________________________________________________________________");
-        System.out.println("Du har indtastet følgende oplysninger: "+"\nAntal kørte kilometer: "+antalkørtekilometer+"\nAntal kørte dage: "+antalkørselsdage+"\nUgenummer: "+ugenummer);
+//Her printes oplysningerne ud på antal kilometer, antal kørte dage og ugenummer
+        System.out.println("Du har indtastet følgende oplysninger: "+"\nAntal kørte kilometer: "+kilometersdriven+"\nAntal kørte dage: "+daysdriven+"\nUgenummer: "+weeknumber);
 
         System.out.println("_________________________________________________________________________________");
 
-        Cycleweek cycleweek = new Cycleweek(antalkørtekilometer, antalkørselsdage,ugenummer);
+        Cycleweek cycleweek = new Cycleweek(kilometersdriven, daysdriven,weeknumber);
         this.currentUser.addcycleweek(cycleweek);
 
 
@@ -64,32 +69,35 @@ public class MemberController {
         if(currentUser.getCycleweeklist().size()==0){
             System.out.println("Du har ingen cykelture du kan ændre");
         } else{
-            System.out.println("_________________________________________________________________________________________________________");
+            System.out.println("---------------------------------------------------------------------------------------------------");
             System.out.println("Nedenstående kan du se de cykelture du kan ændre: ");
 
-//            Header i de Cykelture man kan ændre
-            System.out.printf("%-10s %-40s %-30s %-40s \n","Nr.", "Cykelturens antal kørte kilometer: ", "Cykelturens antal kørte dage: ","Cykelturens ugenummer: ");
-            for(Cycleweek cykeltur: currentUser.getCycleweeklist()){
-                System.out.printf("%-10d %-40d %-30d %-40s \n",index,cykeltur.getKilometersdriven(),cykeltur.getDaysdriven(),cykeltur.getWeeknumber());
+//            Header i de Cykelture man kan ændre, derudover nedenstående i for-løkken udprintes data arraylisten "Cycleweeklist"
+            System.out.printf("%-10s %-20s %-30s %-40s \n","Nr.", "Cykelturens antal kørte kilometer: ", "Cykelturens antal kørte dage: ","Cykelturens ugenummer: ");
+            for(Cycleweek cycleweek: currentUser.getCycleweeklist()){
+                System.out.printf("%-10d %-40.2f %-30d %-40d \n",index,cycleweek.getKilometersdriven(),cycleweek.getDaysdriven(),cycleweek.getWeeknumber());
                 index++;
-                System.out.println("_________________________________________________________________________________________________________");
+                System.out.println("---------------------------------------------------------------------------------------------------");
             }
 
         }
+//        Her defineres variablerne
         int i;
-        int newkilometersdriven;
+        double newkilometersdriven;
         int newdaysdriven;
-        int nyugenummer;
+        int newweeknumber;
         Cycleweek cycleweektochange;
         System.out.print("");
-        System.out.println("Indtast nummeret på den cykeltur du gerne vil ændre ");
+        System.out.println("Indtast nummeret på den cykeltur du gerne vil ændre: ");
         i=inputCtrl.læsInputSomInt();
 
+//        Her kalder den Arraylisten "cycleweeklist" ved, at sige currentuser.getCycleweeklist.get(i-1) hvilket betyder at den vil altid starte på 0
+//        Derfor hvis man indtaster 1, så skal den vide at det er plads nummer 0 i arrayet.
         cycleweektochange=currentUser.getCycleweeklist().get(i-1);
 
 //        Her vælges antal kørte kilometer til at ændre
         System.out.println("Vælg antal kørte kilometer: ");
-        newkilometersdriven=inputCtrl.læsInputSomInt();
+        newkilometersdriven=input.nextDouble();
         cycleweektochange.setKilometersdriven(newkilometersdriven);
 
 
@@ -101,8 +109,8 @@ public class MemberController {
 
         // Her Ugenummeret man gerne vil ændre
         System.out.println("Vælg ugenummer: ");
-        nyugenummer=inputCtrl.læsInputSomInt();
-        cycleweektochange.setWeeknumber(nyugenummer);
+        newweeknumber=inputCtrl.læsInputSomInt();
+        cycleweektochange.setWeeknumber(newweeknumber);
 
 
 
@@ -118,16 +126,17 @@ public class MemberController {
         } else {
 
             System.out.println("Dine Cykelture er: ");
-            System.out.println("-------------------------------------------------------------------------------");
+            System.out.println("---------------------------------------------------------------------------------------------------");
             // Header i Cykelturvisning
-            System.out.printf("%-10s %-40s %-30s \n", "Nr.", "Cykelturens antal kørte kilometer:", "Cykelturens antal kørte dage:");
-            System.out.println("-------------------------------------------------------------------------------");
+            System.out.printf("%-10s %-20s %-30s %-40s \n", "Nr.", "Cykelturens antal kørte kilometer:", "Cykelturens antal kørte dage:","Cykelturens ugenummer:");
+            System.out.println("---------------------------------------------------------------------------------------------------");
             for (Cycleweek cykeltur : currentUser.getCycleweeklist()) {
-                System.out.printf("%-10d %-40d %-30d \n", i, cykeltur.getKilometersdriven(), cykeltur.getWeeknumber());
+                System.out.printf("%-10d %-40.2f %-30d %-40d \n", i, cykeltur.getKilometersdriven(),cykeltur.getDaysdriven(),cykeltur.getWeeknumber());
                 i++;
-                System.out.println("-------------------------------------------------------------------------------");
+                System.out.println("---------------------------------------------------------------------------------------------------");
             }
         }
+//        Her oprettes et objekt af Cycleweek klassen, hvorefter vi opretter et index der vil være det tal du indtaster for at slette noget.
         int index;
         Cycleweek cycleweektodelete;
         System.out.print("");
@@ -167,6 +176,10 @@ public class MemberController {
 
                     for (User member : team.getUsers()) {
                         System.out.println(member.getName());
+                    }
+
+                    for (Cycleweek cl : user.getCycleweeklist()) {
+                        System.out.printf("%-30s %-10s\n",cl.getKilometersdriven(), cl.getWeeknumber());
                     }
                 }
             }

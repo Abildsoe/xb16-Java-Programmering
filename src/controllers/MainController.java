@@ -1,3 +1,4 @@
+//http://www.chris.com/ascii/index.php?art=transportation%2Fbicycles - koden til de 5 cykler er fundet her
 package controllers;
 
 import data.Data;
@@ -23,6 +24,12 @@ public class MainController {
 
         while (true) {
             System.out.println("Velkommen:");
+            System.out.println("\n" +
+                    " -------- __@      __@       __@       __@      __~@\n" +
+                    " ----- _`\\<,_    _`\\<,_    _`\\<,_     _`\\<,_    _`\\<,_\n" +
+                    " ---- (*)/ (*)  (*)/ (*)  (*)/ (*)  (*)/ (*)  (*)/ (*)\n" +
+                    " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+                    "\n");
             System.out.println("1) Login ");
             System.out.println("2) Opret bruger");
             int x = inputCtrl.læsInputSomInt();

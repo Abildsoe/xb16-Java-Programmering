@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class Cycleweek {
 
-    private int kilometersdriven;
+    private double kilometersdriven;
     private int weeknumber;
     private int daysdriven;
     private ArrayList<Cycleweek> cycleweeklist = new ArrayList<>();
 
 
-    public Cycleweek(int kilometersdriven, int weeknumber, int daysdriven) {
+    public Cycleweek(double kilometersdriven, int weeknumber, int daysdriven) {
         this.kilometersdriven = kilometersdriven;
         this.weeknumber = weeknumber;
         this.daysdriven = daysdriven;
@@ -19,10 +19,10 @@ public class Cycleweek {
 
 
     // Her laves get og set metoder for kilometersdriven
-    public int getKilometersdriven() {
+    public double getKilometersdriven() {
         return kilometersdriven;
     }
-    public void setKilometersdriven(int kilometersdriven) {
+    public void setKilometersdriven(double kilometersdriven) {
         this.kilometersdriven = kilometersdriven;
     }
 
