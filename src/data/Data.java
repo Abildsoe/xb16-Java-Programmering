@@ -128,9 +128,7 @@ public class Data {
     }
 
 
-    public ArrayList<User> getUsers() {
-        return users;
-    }
+    public ArrayList<User> getUsers() { return users; }
 
     public ArrayList<Team> getTeams() {
         return teams;
