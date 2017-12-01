@@ -29,10 +29,9 @@ public class MemberController {
         System.out.println("1) Indberetning af cykelture");
         System.out.println("2) Ændre cykelture");
         System.out.println("3) Slet cykelture");
-        System.out.println("4) Vis alle oplysninger om en deltager");
-        System.out.println("5) Vis alle oplysninger om eget hold");
-        System.out.println("6) Vis en statistik over gennemsnitlige kørte km");
-        System.out.println("8) Log ud af systemet");
+        System.out.println("4) Vis alle oplysninger om eget hold");
+        System.out.println("5) Vis en statistik over gennemsnitlige kørte km");
+        System.out.println("7) Log ud af systemet");
 
     }
 

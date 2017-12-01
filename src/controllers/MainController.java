@@ -71,15 +71,15 @@ public class MainController {
                                 break;
 
 
-                            case 5:
+                            case 4:
                                 userCtrl.showInformationAboutOwnTeam();
                                 break;
 
-                            case 6:
+                            case 5:
                                 userCtrl.statisticsonkilometersanddays();
                                 break;
 
-                            case 7:
+                            case 6:
                                 if (currentUser.getType() != UserType.Holdkaptajn) {
                                     System.out.println("Ugyldigt valg");
                                 } else {
@@ -87,7 +87,7 @@ public class MainController {
                                 }
                                 break;
 
-                            case 8:
+                            case 7:
                                 logUd();
                                 break;
 
