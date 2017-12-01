@@ -9,9 +9,8 @@ public class User {
     private int password;
     private String name;
     private UserType type;
-    private ArrayList<Cycleweek> cycleweeklist  = new ArrayList<>();
+    private ArrayList<Cycleweek> cycleweeklist = new ArrayList<>();
     private Team team;
-    private Data data;
 
 
     public User(String username, int password, String name, UserType type) {
@@ -19,13 +18,13 @@ public class User {
         this.password = password;
         this.name = name;
         this.type = type;
-        this.cycleweeklist  = new ArrayList<>();
-        this.team=team;
-        this.data=data;
-
+        this.cycleweeklist = new ArrayList<>();
+        this.team = team;
     }
 
-    public void addcycleweek(Cycleweek cycleweek) { cycleweeklist.add(cycleweek); }
+    public void addcycleweek(Cycleweek cycleweek) {
+        cycleweeklist.add(cycleweek);
+    }
 
     // Her laves get og set metoder for "username"
     public String getUsername() {
@@ -34,9 +33,9 @@ public class User {
 
 
     // Her laves get metoder for "password"
-    public int getPassword() { return password; }
-
-
+    public int getPassword() {
+        return password;
+    }
 
 
     // Her laves get og set metoder for "name"
@@ -45,12 +44,10 @@ public class User {
     }
 
 
-
     // Her oprettes Get metode for "type"
     public UserType getType() {
         return type;
     }
-
 
 
     // Her oprettes en get metode
@@ -59,15 +56,15 @@ public class User {
     }
 
 
-// Her oprettes get for "Cykelturliste"
+    // Her oprettes get for "Cykelturliste"
     public ArrayList<Cycleweek> getCycleweeklist() {
         return cycleweeklist;
     }
 
 
-    public int getTotalDistance(){
+    public int getTotalDistance() {
 
-        int totalDistance=0;
+        int totalDistance = 0;
 
 
         for (Cycleweek cycleweek : cycleweeklist) {
@@ -77,4 +74,19 @@ public class User {
         }
         return totalDistance;
     }
+
+    public int getTotalDays() {
+
+        int totalDays = 0;
+
+
+        for (Cycleweek cycleweek : cycleweeklist) {
+
+            totalDays += cycleweek.getDaysdriven();
+
+        }
+        return totalDays;
+    }
 }
+
+
