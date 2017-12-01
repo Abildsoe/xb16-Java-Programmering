@@ -27,7 +27,6 @@ public class MemberController {
         System.out.println("1) Indberetning af cykelture");
         System.out.println("2) Ændre cykelture");
         System.out.println("3) Slet cykelture");
-        System.out.println("4) Vis alle oplysninger om en deltager");
         System.out.println("5) Vis alle oplysninger om eget hold");
         System.out.println("6) Vis en statistik over gennemsnitlige kørte km");
         System.out.println("8) Log ud af systemet");
@@ -142,36 +141,78 @@ public class MemberController {
         System.out.println("________________________________________");
     }
 
-    public void oplysningerpåenDeltager() {
-        int antalkørtekm = 0;
-        int antalkøretdage = 0;
-        for (Cycleweek cycleweek : currentUser.getCycleweeklist()) {
-            antalkørtekm += cycleweek.getKilometersdriven();
 
-        }
-        System.out.println("\n1)Deltager: " + currentUser.getUsername() + "\n2)Brugertype:" + currentUser.getType() +
-                "\n3)Brugerens hold: "
-                + currentUser.getTeam().getTeamName() +
-                "\n4)Brugerens indtastede kilometer: "
-                + currentUser.getCycleweeklist().get(0).getKilometersdriven() +
-                "\n5)Brugerens indtastede antal kørte dage: " + currentUser.getCycleweeklist().get(0).getWeeknumber());
-    }
+    public void showInformationAboutOwnTeam() {
 
-    public void oplysningerpåegetHold() {
-        int i = 0;
-        for (Team team : this.data.getTeams()) { // alle hold
-            for (User user : team.getUsers()) {// alle holdmedlemmer på hvert hold
-                if (user.equals(currentUser)) { // tjekker om alle brugere i listen, er tilknyttet det samme hold id som currentuser
+        System.out.println("---------------------------------------------------------------------------------------------------");
 
-                    System.out.println(team.getTeamName());
+        System.out.println("\n ------___O");
+        System.out.println("----_\\<,_");
+        System.out.println("----_\\<,_           Nedenstående tabel viser forløbsoplysninger om dit hold");
+        System.out.println("----(_)/(_)");
 
-                    for (User member : team.getUsers()) {
-                        System.out.println(member.getName());
+
+        System.out.println(" ");
+        System.out.println(" ");
+
+        System.out.printf("%-30s%-30s%-30s%-10s","Holdinformation", " Antallet af cyklede km på en uge " ," Kørselsdage" , " Ugenummer\n");
+        System.out.println("------------------------------------------------------------------------------------------------------------");
+
+
+        for(Team team:this.data.getTeams()){//initialiserer alle hold
+            for(User user :team.getUsers()){// initialiserer alle holdmedlemmer på hvert hold
+                if(user.equals(currentUser)){//tjekker hvilke hold medlemmer der er tilknyttet brugerens hold
+
+
+                    System.out.println("Team name  " + team.getTeamName());
+                    System.out.println("Team Leader  " + team.getTeamLeader());
+
+
+                    System.out.println("---------------------------------------------------------------------------------------------------");
+
+                    for(User member:team.getUsers()){//alle holdmedlemmer på hvert hold
+                        for(Cycleweek cl :member.getCycleweeklist()){// Cykelforløb data hentes for hvert enkelt medlem på hold
+
+
+                            System.out.printf("%-30s%-30s%-30s%-10s\n" , member.getName(), cl.getKilometersdriven(),cl.getDaysdriven(),cl.getWeeknumber());
+                            System.out.println("---------------------------------------------------------------------------------------------------");
+
                     }
+
                 }
+            }
             }
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /* Created by Ahilan Selliah 18/11/2017
 
