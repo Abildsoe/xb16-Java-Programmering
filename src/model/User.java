@@ -1,7 +1,9 @@
 package model;
 
 import data.Data;
+
 import java.util.ArrayList;
+
 import model.Cycleweek;
 
 public class User {

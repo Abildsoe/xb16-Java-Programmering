@@ -38,7 +38,7 @@ public class MainController {
 
             if (x == 2) {
                 opretBruger();
-            } else if(x==1) {
+            } else if (x == 1) {
 
 
                 System.out.println("Indtast venligst dit brugernavn:");
@@ -103,8 +103,7 @@ public class MainController {
                 } else {
                     System.out.println("\nDu har indtastet forkert brugernavn eller password");
                 }
-            }
-            else{
+            } else {
                 System.out.println("Prøv igen");
                 System.out.println();
             }
@@ -163,6 +162,7 @@ public class MainController {
 
         return false;
     }
+
     public String læsInputSomString() {
         return this.input.nextLine();
     }
@@ -177,6 +177,7 @@ public class MainController {
         }
 
     }
+
     private void logUd() {
 
         System.out.println("Du er nu logget ud af systemet, hvis du har lyst kan du logge ind igen eller på en anden bruger - tak for i dag.\n");
