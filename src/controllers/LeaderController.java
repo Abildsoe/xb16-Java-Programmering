@@ -5,11 +5,13 @@ import model.Cycleweek;
 import model.Team;
 import model.User;
 
+import java.util.Scanner;
+
 public class LeaderController extends MemberController {
 
 
-    public LeaderController(User currentUser, InputController inputCtrl, Data data) {
-        super(currentUser, inputCtrl, data);
+    public LeaderController(User currentUser, Scanner input, Data data) {
+        super(currentUser, input, data);
     }
 
     //https://stackoverflow.com/questions/16242733/sum-all-the-elements-java-arraylist

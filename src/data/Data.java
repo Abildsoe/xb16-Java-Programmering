@@ -13,7 +13,6 @@ public class Data {
     private ArrayList<Team> teams;
     private ArrayList<User> users = new ArrayList<>();
     private ArrayList<Cycleweek> cycleweeklist = new ArrayList<>();
-    private Scanner input = new Scanner(System.in);
 
     public Data() {
         this.users = new ArrayList<>();
@@ -73,22 +72,22 @@ public class Data {
         users.add(user15);
         users.add(user16);
 
-        team1.addusers(user1);
-        team1.addusers(user2);
-        team1.addusers(user3);
-        team1.addusers(user4);
-        team2.addusers(user5);
-        team2.addusers(user6);
-        team2.addusers(user7);
-        team2.addusers(user8);
-        team3.addusers(user9);
-        team3.addusers(user10);
-        team3.addusers(user11);
-        team3.addusers(user12);
-        team4.addusers(user13);
-        team4.addusers(user14);
-        team4.addusers(user15);
-        team4.addusers(user16);
+        team1.addUser(user1);
+        team1.addUser(user2);
+        team1.addUser(user3);
+        team1.addUser(user4);
+        team2.addUser(user5);
+        team2.addUser(user6);
+        team2.addUser(user7);
+        team2.addUser(user8);
+        team3.addUser(user9);
+        team3.addUser(user10);
+        team3.addUser(user11);
+        team3.addUser(user12);
+        team4.addUser(user13);
+        team4.addUser(user14);
+        team4.addUser(user15);
+        team4.addUser(user16);
 
         Cycleweek cycleweek1 = new Cycleweek(30, 40,5);
         user1.addcycleweek(cycleweek1);

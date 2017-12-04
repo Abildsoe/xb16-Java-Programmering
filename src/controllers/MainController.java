@@ -6,16 +6,18 @@ import model.Team;
 import model.User;
 import model.UserType;
 
+import java.util.Scanner;
+
 public class MainController {
     private Data db;
     private User currentUser;
     private MemberController userCtrl;
-    private InputController inputCtrl;
+    private Scanner input;
 
     public MainController() {
         this.currentUser = null;
         this.db = new Data();
-        this.inputCtrl = new InputController();
+        this.input = new Scanner(System.in);
     }
 
     public void run() {
@@ -32,29 +34,29 @@ public class MainController {
                     "\n");
             System.out.println("1) Login ");
             System.out.println("2) Opret bruger");
-            int x = inputCtrl.læsInputSomInt();
+            int x = læsInputSomInt();
 
             if (x == 2) {
                 opretBruger();
-            } else {
+            } else if(x==1) {
 
 
                 System.out.println("Indtast venligst dit brugernavn:");
-                username = inputCtrl.læsInputSomString();
+                username = læsInputSomString();
 
                 System.out.println("Indtast venligst din adgangskode:");
-                password = inputCtrl.læsInputSomInt();
+                password = læsInputSomInt();
 
                 if (authUser(username, password)) {
                     if (currentUser.getType() == UserType.Holdkaptajn) {
-                        userCtrl = new LeaderController(currentUser, inputCtrl, db);
+                        userCtrl = new LeaderController(currentUser, input, db);
                     } else {
-                        userCtrl = new MemberController(currentUser, inputCtrl, db);
+                        userCtrl = new MemberController(currentUser, input, db);
                     }
 
                     do {
                         userCtrl.showUserMenu();
-                        int valg = inputCtrl.læsInputSomInt();
+                        int valg = læsInputSomInt();
 
                         switch (valg) {
 
@@ -102,6 +104,10 @@ public class MainController {
                     System.out.println("\nDu har indtastet forkert brugernavn eller password");
                 }
             }
+            else{
+                System.out.println("Prøv igen");
+                System.out.println();
+            }
         }
     }
 
@@ -111,9 +117,9 @@ public class MainController {
         int password;
         System.out.println("Opret bruger");
         System.out.println("Indtast fulde navn");
-        String navn = inputCtrl.læsInputSomString();
+        String navn = læsInputSomString();
         System.out.println("Indtast venligst det ønskede brugernavn:");
-        username = inputCtrl.læsInputSomString();
+        username = læsInputSomString();
         for (User u : this.db.getUsers()) {
             if (username.equals(u.getUsername())) {
                 System.out.println("Brugernavn er allerede taget");
@@ -123,14 +129,14 @@ public class MainController {
         }
 
         System.out.println("Indtast venligst din adgangskode:");
-        password = inputCtrl.læsInputSomInt();
+        password = læsInputSomInt();
         System.out.println("Team navne og team id");
         for (Team t : db.getTeams()) {
             System.out.println(t.getTeamName() + ": " + t.getTeamID());
 
         }
         System.out.println("Indtast venligst dit teams id:");
-        int teamId = inputCtrl.læsInputSomInt();
+        int teamId = læsInputSomInt();
         Team team = null;
         for (Team t : db.getTeams()) {
             if (t.getTeamID() == teamId) {
@@ -141,6 +147,7 @@ public class MainController {
 
         User ny = new User(username, password, navn, UserType.User);
         db.getUsers().add(ny);
+        team.addUser(ny);
         System.out.println("Brugeren er oprettet, velkommen!");
     }
 
@@ -156,7 +163,20 @@ public class MainController {
 
         return false;
     }
+    public String læsInputSomString() {
+        return this.input.nextLine();
+    }
 
+    public int læsInputSomInt() {
+        try {
+            String str = læsInputSomString();
+            return Integer.parseInt(str);
+        } catch (Exception e) {
+            System.out.println("Prøv igen med et tal i stedet!");
+            return læsInputSomInt();
+        }
+
+    }
     private void logUd() {
 
         System.out.println("Du er nu logget ud af systemet, hvis du har lyst kan du logge ind igen eller på en anden bruger - tak for i dag.\n");

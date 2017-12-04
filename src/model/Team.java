@@ -18,7 +18,7 @@ public class Team {
         this.users = new ArrayList<>();
     }
 
-    public void addusers(User user) {
+    public void addUser(User user) {
         users.add(user);
 
     }
