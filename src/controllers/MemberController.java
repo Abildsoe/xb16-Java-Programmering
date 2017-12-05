@@ -23,9 +23,9 @@ public class MemberController {
     public void showUserMenu() {
 
         System.out.println("Brugermenu:");
-        System.out.println("1) Indberetning af cykelture");
-        System.out.println("2) Ændre cykelture");
-        System.out.println("3) Slet cykelture");
+        System.out.println("1) Indberetning af cykeluge");
+        System.out.println("2) Ændre cykeluge");
+        System.out.println("3) Slet cykeluge");
         System.out.println("4) Vis alle oplysninger om eget hold");
         System.out.println("5) Vis en statistik over gennemsnitlige kørte km");
         System.out.println("7) Log ud af systemet");
@@ -84,7 +84,7 @@ public class MemberController {
         int newweeknumber;
         Cycleweek cycleweektochange;
         System.out.print("");
-        System.out.println("Indtast nummeret på den cykeltur du gerne vil ændre: ");
+        System.out.println("Indtast nummeret på den cykeluge du gerne vil ændre: ");
         i = læsInputSomInt();
 
 //        Her kalder den Arraylisten "cycleweeklist" ved, at sige currentuser.getCycleweeklist.get(i-1) hvilket betyder at den vil altid starte på 0
@@ -115,13 +115,13 @@ public class MemberController {
         int i = 1;
         //Tjek om der findes nogen cykelture
         if (currentUser.getCycleweeklist().size() == 0) {
-            System.out.println("Du har ingen indtastede cykelture");
+            System.out.println("Du har ingen indtastede cykeluger");
         } else {
 
-            System.out.println("Dine Cykelture er: ");
+            System.out.println("Dine cykeluger er: ");
             System.out.println("---------------------------------------------------------------------------------------------------");
             // Header i Cykelturvisning
-            System.out.printf("%-10s %-20s %-30s %-40s \n", "Nr.", "Cykelturens antal kørte kilometer:", "Cykelturens antal kørte dage:", "Cykelturens ugenummer:");
+            System.out.printf("%-10s %-20s %-30s %-40s \n", "Nr.", "Cykelugens antal kørte kilometer:", "Cykelugenss antal kørte dage:", "Cykelugens ugenummer:");
             System.out.println("---------------------------------------------------------------------------------------------------");
             for (Cycleweek cykeltur : currentUser.getCycleweeklist()) {
                 System.out.printf("%-10d %-40.2f %-30d %-40d \n", i, cykeltur.getKilometersdriven(), cykeltur.getDaysdriven(), cykeltur.getWeeknumber());
@@ -133,14 +133,14 @@ public class MemberController {
         int index;
         Cycleweek cycleweektodelete;
         System.out.print("");
-        System.out.println("Indtast nummeret på den cykeltur du gerne vil slette ");
+        System.out.println("Indtast nummeret på den cykeluge du gerne vil slette ");
         index = læsInputSomInt();
         --index; // træk en fra antallet af cykelture
         cycleweektodelete = currentUser.getCycleweeklist().get(index);
 
         currentUser.getCycleweeklist().remove(cycleweektodelete);
         System.out.println("________________________________________");
-        System.out.println("Cykelturen blev slettet fra dit register");
+        System.out.println("Cykelugen blev slettet fra dit register");
         System.out.println("________________________________________");
     }
 
@@ -158,7 +158,7 @@ public class MemberController {
         System.out.println(" ");
         System.out.println(" ");
 
-        System.out.printf("%-30s%-30s%-30s%-10s", "Holdinformation", " Antallet af cyklede km på en uge ", " Kørselsdage", " Ugenummer\n");
+        System.out.printf("%-30s%-45s%-20s%-10s", "Holdinformation:", " Antallet af cyklede km på en uge: ", " Kørselsdage:", " Ugenummer:\n");
         System.out.println("------------------------------------------------------------------------------------------------------------");
 
 
@@ -171,14 +171,14 @@ public class MemberController {
                     System.out.println("Team Leader  " + team.getTeamLeader());
 
 
-                    System.out.println("---------------------------------------------------------------------------------------------------");
+                    System.out.println("------------------------------------------------------------------------------------------------------------");
 
                     for (User member : team.getUsers()) {//alle holdmedlemmer på hvert hold
                         for (Cycleweek cl : member.getCycleweeklist()) {// Cykelforløb data hentes for hvert enkelt medlem på hold
 
 
-                            System.out.printf("%-30s%-30s%-30s%-10s\n", member.getName(), cl.getKilometersdriven(), cl.getDaysdriven(), cl.getWeeknumber());
-                            System.out.println("---------------------------------------------------------------------------------------------------");
+                            System.out.printf("%-45s%-35s%-20s%-30s\n", member.getName(), cl.getKilometersdriven(), cl.getDaysdriven(), cl.getWeeknumber());
+                            System.out.println("------------------------------------------------------------------------------------------------------------");
 
                         }
 
@@ -192,7 +192,7 @@ public class MemberController {
 
      */
     public void statisticsonkilometersanddays() {
-        System.out.println("Statistik på cykelture");
+        System.out.println("Statistik på indberetninger");
         System.out.println("------------");
         Statistics resultatForBruger = GennemsnitForBruger(currentUser);
         System.out.println("Statestik for: " + currentUser.getName());
