@@ -28,27 +28,21 @@ public class Team {
         return teamID;
     }
 
-    public void setTeamID() {
-        this.teamID = teamID;
-    }
+
 
     // Her laves get og set metoder for "teamname"
     public String getTeamName() {
         return teamName;
     }
 
-    public void setTeamName() {
-        this.teamName = teamName;
-    }
+
 
     // Her laves get og set metoder for "teamleader"
     public String getTeamLeader() {
         return teamLeader;
     }
 
-    public void setTeamLeader() {
-        this.teamLeader = teamLeader;
-    }
+
 
     public ArrayList<User> getUsers() {
         return users;

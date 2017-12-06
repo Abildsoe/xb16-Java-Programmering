@@ -6,18 +6,15 @@ import model.User;
 import model.UserType;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Data {
 
     private ArrayList<Team> teams;
     private ArrayList<User> users = new ArrayList<>();
-    private ArrayList<Cycleweek> cycleweeklist = new ArrayList<>();
 
     public Data() {
         this.users = new ArrayList<>();
         this.teams = new ArrayList<>();
-        this.cycleweeklist = new ArrayList<>();
 
         generateData();
     }
@@ -25,7 +22,7 @@ public class Data {
     private void generateData() {
 
         Team team1 = new Team(1, "Advokatsamfundet", "Hans Hansen");
-        User user1 = new User("h", 1, "Hans Hansen", UserType.Holdkaptajn);
+        User user1 = new User("Hans45@gmail.com", 1234, "Hans Hansen", UserType.Holdkaptajn);
         User user2 = new User("Bente65@gmail.com", 3450, "Bent Andersen", UserType.User);
         User user3 = new User("Peter78@gmail.com", 1311, "Peter Andersen", UserType.User);
         User user4 = new User("Morten78@gmail.com", 1319, "Morten Andersen", UserType.User);
@@ -121,7 +118,6 @@ public class Data {
         user15.addcycleweek(cycleweek15);
         Cycleweek cycleweek16 = new Cycleweek(10, 40, 2);
         user16.addcycleweek(cycleweek16);
-
 
     }
 

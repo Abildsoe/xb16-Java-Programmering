@@ -1,10 +1,6 @@
 package model;
 
-import data.Data;
-
 import java.util.ArrayList;
-
-import model.Cycleweek;
 
 public class User {
     private String username;
@@ -64,23 +60,27 @@ public class User {
     }
 
 
-    public int getTotalDistance() {
+    //Her opretter vi vores metode som skal kunne hente total antal kørte dage for en users cykeluge array
 
-        int totalDistance = 0;
+    public double getTotalDistance() {
 
+        double totalDistance = 0;
+
+        //itterer igennem cycleweek arrayet
 
         for (Cycleweek cycleweek : cycleweeklist) {
 
+            //når vi får fat på data'en i arrayet beder vi programmet lægge det sammen med vores variable 'totalday', hvilket betyder at vi får det totale resultat
             totalDistance += cycleweek.getKilometersdriven();
 
         }
         return totalDistance;
     }
 
+    //Det samme gælder denne metode som 'getTotalDistance', dog er vores variable her en int, da dage ikke kan være halve, så det skal være heltal
     public int getTotalDays() {
 
         int totalDays = 0;
-
 
         for (Cycleweek cycleweek : cycleweeklist) {
 

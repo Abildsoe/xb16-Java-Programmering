@@ -7,14 +7,12 @@ public class Cycleweek {
     private double kilometersdriven;
     private int weeknumber;
     private int daysdriven;
-    private ArrayList<Cycleweek> cycleweeklist = new ArrayList<>();
 
 
     public Cycleweek(double kilometersdriven, int weeknumber, int daysdriven) {
         this.kilometersdriven = kilometersdriven;
         this.weeknumber = weeknumber;
         this.daysdriven = daysdriven;
-        this.cycleweeklist = new ArrayList<>();
     }
 
 
@@ -46,10 +44,4 @@ public class Cycleweek {
     public void setDaysdriven(int daysdriven) {
         this.daysdriven = daysdriven;
     }
-
-    public ArrayList<Cycleweek> getCykelugeliste() {
-        return cycleweeklist;
-    }
-
-
 }

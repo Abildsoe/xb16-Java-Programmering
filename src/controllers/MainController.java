@@ -147,7 +147,9 @@ public class MainController {
         User ny = new User(username, password, navn, UserType.User);
         db.getUsers().add(ny);
         team.addUser(ny);
-        System.out.println("Brugeren er oprettet, velkommen!");
+        System.out.println("Brugeren er oprettet, velkommen!\n");
+        System.out.println("------------------------------------------------------------------------------\n");
+
     }
 
     private boolean authUser(String username, int password) {
@@ -155,7 +157,8 @@ public class MainController {
 
             if (username.equals(user.getUsername()) && password == user.getPassword()) {
                 currentUser = user;
-                System.out.println("Velkommen " + currentUser.getName());
+                System.out.println("\nVelkommen " + currentUser.getName());
+                System.out.println("--------------------------------------------------------");
                 return true;
             }
         }
