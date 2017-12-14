@@ -41,10 +41,8 @@ public class LeaderController extends MemberController {
 
 
     public void showUserMenu() {
-
-        int valg;
         System.out.println("Holdkaptajnmenu:");
-        System.out.println("1) Indberetning af cykeluger");
+        System.out.println("1) Indberetning af cykeluge");
         System.out.println("2) Ændre cykeluger");
         System.out.println("3) Slet cykeluge");
         System.out.println("4) Vis alle oplysninger om eget hold");

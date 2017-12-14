@@ -29,19 +29,16 @@ public class Team {
     }
 
 
-
     // Her laves get og set metoder for "teamname"
     public String getTeamName() {
         return teamName;
     }
 
 
-
     // Her laves get og set metoder for "teamleader"
     public String getTeamLeader() {
         return teamLeader;
     }
-
 
 
     public ArrayList<User> getUsers() {

@@ -24,8 +24,8 @@ public class MemberController {
 
         System.out.println("Brugermenu:");
         System.out.println("1) Indberetning af cykeluge");
-        System.out.println("2) Ændre cykeluge");
-        System.out.println("3) Slet cykeluge");
+        System.out.println("2) Ændre cykeluger");
+        System.out.println("3) Slet cykeluger");
         System.out.println("4) Vis alle oplysninger om eget hold");
         System.out.println("5) Vis en statistik over gennemsnitlige kørte km");
         System.out.println("7) Log ud af systemet");
@@ -48,10 +48,9 @@ public class MemberController {
         kilometersdriven = læsInputSomDouble();
 
 
-
         System.out.println("---------------------------------------");
         //Her printes oplysningerne ud på antal kilometer, antal kørte dage og ugenummer
-        System.out.println("Du har indtastet følgende oplysninger: " + "\nUgenummer: " + weeknumber +"\nKørt distance for given uge: " + kilometersdriven + "\nKørte dage: " + daysdriven);
+        System.out.println("Du har indtastet følgende oplysninger: " + "\nUgenummer: " + weeknumber + "\nKørt distance for given uge: " + kilometersdriven + "\nKørte dage: " + daysdriven);
 
         System.out.println("---------------------------------------");
 
@@ -90,35 +89,35 @@ public class MemberController {
             System.out.println("Indtast nummeret på den cykeluge du gerne vil ændre: ");
             i = læsInputSomInt();
 
-                //Her kalder den Arraylisten "cycleweeklist" ved, at sige currentuser.getCycleweeklist.get(i-1) hvilket betyder at den vil altid starte på 0
-                //Derfor hvis man indtaster 1, så skal den vide at det er plads nummer 0 i arrayet.
-                cycleweektochange = currentUser.getCycleweeklist().get(i - 1);
+            //Her kalder den Arraylisten "cycleweeklist" ved, at sige currentuser.getCycleweeklist.get(i-1) hvilket betyder at den vil altid starte på 0
+            //Derfor hvis man indtaster 1, så skal den vide at det er plads nummer 0 i arrayet.
+            cycleweektochange = currentUser.getCycleweeklist().get(i - 1);
 
 
-                // Her Ugenummeret man gerne vil ændre
-                System.out.println("Vælg ugenummer: ");
-                newweeknumber = læsInputSomInt();
-                cycleweektochange.setWeeknumber(newweeknumber);
+            // Her Ugenummeret man gerne vil ændre
+            System.out.println("Vælg ugenummer: ");
+            newweeknumber = læsInputSomInt();
+            cycleweektochange.setWeeknumber(newweeknumber);
 
-                //Her vælges antal kørte kilometer til at ændre
-                System.out.println("Vælg kørt distance for given uge: ");
-                newkilometersdriven = læsInputSomDouble();
-                cycleweektochange.setKilometersdriven(newkilometersdriven);
-
-
-                //Her vælges antal kørte dage til at ændre
-                System.out.println("Vælg kørte dage: ");
-                newdaysdriven = læsInputSomInt();
-                cycleweektochange.setDaysdriven(newdaysdriven);
+            //Her vælges antal kørte kilometer til at ændre
+            System.out.println("Vælg kørt distance for given uge: ");
+            newkilometersdriven = læsInputSomDouble();
+            cycleweektochange.setKilometersdriven(newkilometersdriven);
 
 
-                System.out.println("-----------------------------------------");
-                System.out.println("Din ændring er nu registreret i systemet!");
-                System.out.println("-----------------------------------------");
+            //Her vælges antal kørte dage til at ændre
+            System.out.println("Vælg kørte dage: ");
+            newdaysdriven = læsInputSomInt();
+            cycleweektochange.setDaysdriven(newdaysdriven);
 
 
-            }
+            System.out.println("-----------------------------------------");
+            System.out.println("Din ændring er nu registreret i systemet!");
+            System.out.println("-----------------------------------------");
+
+
         }
+    }
 
 
     public void deleteinformation() {
