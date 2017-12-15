@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Cycleweek {
 
     private double kilometersdriven;
@@ -25,7 +23,6 @@ public class Cycleweek {
         this.kilometersdriven = kilometersdriven;
     }
 
-
     // Her laves get og set metoder for weeknumber
     public int getWeeknumber() {
         return weeknumber;
@@ -34,7 +31,6 @@ public class Cycleweek {
     public void setWeeknumber(int weeknumber) {
         this.weeknumber = weeknumber;
     }
-
 
     // Her oprettes get og set metoder for "daysdriven"
     public int getDaysdriven() {

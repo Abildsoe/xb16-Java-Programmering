@@ -22,30 +22,30 @@ public class Data {
     private void generateData() {
 
         Team team1 = new Team(1, "Advokatsamfundet", "Hans Hansen");
-        User user1 = new User("Hans45@gmail.com", 1234, "Hans Hansen", UserType.Holdkaptajn);
-        User user2 = new User("Bente65@gmail.com", 3450, "Bent Andersen", UserType.User);
-        User user3 = new User("Peter78@gmail.com", 1311, "Peter Andersen", UserType.User);
-        User user4 = new User("Morten78@gmail.com", 1319, "Morten Andersen", UserType.User);
+        User user1 = new User("hans45@gmail.com", 1234, "Hans Hansen", UserType.Leader);
+        User user2 = new User("bente65@gmail.com", 3450, "Bent Andersen", UserType.User);
+        User user3 = new User("peter78@gmail.com", 1311, "Peter Andersen", UserType.User);
+        User user4 = new User("morten78@gmail.com", 1319, "Morten Andersen", UserType.User);
 
 
-        Team team2 = new Team(2, "Københavns Universitet", "Seda");
-        User user5 = new User("Seda19@gmail.com", 1329, "Seda Soysal", UserType.Holdkaptajn);
-        User user6 = new User("Christian21@gmail.com", 1339, "Christian Andersen", UserType.User);
-        User user7 = new User("Ahilan25@gmail.com", 1330, "Ahilan Andersen", UserType.User);
-        User user8 = new User("Alexander20@gmail.com", 1320, "Alexander Abildsø", UserType.User);
+        Team team2 = new Team(2, "Københavns Universitet", "Seda Soysal");
+        User user5 = new User("seda19@gmail.com", 1329, "Seda Soysal", UserType.Leader);
+        User user6 = new User("christian21@gmail.com", 1339, "Christian Andersen", UserType.User);
+        User user7 = new User("ahilan25@gmail.com", 1330, "Ahilan Andersen", UserType.User);
+        User user8 = new User("alexander20@gmail.com", 1320, "Alexander Abildsø", UserType.User);
 
 
-        Team team3 = new Team(3, "Nykredit", "Martin");
-        User user9 = new User("Martin21@gmail.com", 1314, "Martin Jensen", UserType.Holdkaptajn);
-        User user10 = new User("Sebastian29@gmail.com", 1312, "Sebastian Andersen", UserType.User);
-        User user11 = new User("Carl12@gmail.com", 1313, "Carl Strauss", UserType.User);
-        User user12 = new User("Stig59@gmail.com", 1317, "Stig Andersen", UserType.User);
+        Team team3 = new Team(3, "Nykredit", "Martin Jensen");
+        User user9 = new User("martin21@gmail.com", 14, "Martin Jensen", UserType.Leader);
+        User user10 = new User("sebastian29@gmail.com", 1312, "Sebastian Andersen", UserType.User);
+        User user11 = new User("carl12@gmail.com", 131653, "Carl Strauss", UserType.User);
+        User user12 = new User("stig59@gmail.com", 1890317, "Stig Andersen", UserType.User);
 
-        Team team4 = new Team(4, "Vejdirektoratet", "Pia");
-        User user13 = new User("Pia55@gmail.com", 1305, "Pia Andersen", UserType.Holdkaptajn);
-        User user14 = new User("Caroline23@gmail.com", 1304, "Caroline Petersen", UserType.User);
-        User user15 = new User("Dorte43@gmail.com", 1333, "Dorte Hansen", UserType.User);
-        User user16 = new User("Klaus78@gmail.com", 1334, "Bent Larsen", UserType.User);
+        Team team4 = new Team(4, "Vejdirektoratet", "Pia Andersen");
+        User user13 = new User("pia55@gmail.com", 13058, "Pia Andersen", UserType.Leader);
+        User user14 = new User("caro4life@gmail.com", 304, "Caroline Petersen", UserType.User);
+        User user15 = new User("dorte43@gmail.com", 133, "Dorte Hansen", UserType.User);
+        User user16 = new User("moviestar_bent@gmail.com", 1334, "Bent Larsen", UserType.User);
 
         teams.add(team1);
         teams.add(team2);

@@ -5,12 +5,10 @@ import model.*;
 
 import java.util.Scanner;
 
-import java.util.ArrayList;
-
 public class MemberController {
     Scanner input;
 
-    private User currentUser;
+    protected User currentUser;
     protected Data data;
 
     public MemberController(User currentUser, Scanner input, Data data) {
@@ -27,7 +25,6 @@ public class MemberController {
         System.out.println("2) Ændre cykeluger");
         System.out.println("3) Slet cykeluger");
         System.out.println("4) Vis alle oplysninger om eget hold");
-        System.out.println("5) Vis en statistik over gennemsnitlige kørte km");
         System.out.println("7) Log ud af systemet");
 
     }
@@ -39,13 +36,13 @@ public class MemberController {
 
         //Her indtastes en int værdi, som referer tilbage til vores inputcontroller hvor der laves "try" "catch" for at undgå fejl
         System.out.println("Indtast ugenummer: ");
-        weeknumber = læsInputSomInt();
+        weeknumber = readInputAsInt();
         //Her indtastes en double værdi af "antal kilometer"
         System.out.println("Indtast Kørte dage");
-        daysdriven = læsInputSomInt();
+        daysdriven = readInputAsInt();
         //Her indtastes en int værdi, som referer tilbage til vores inputcontroller hvor der laves "try" "catch" for at undgå fejl
         System.out.println("Indtast kørt distance for given uge");
-        kilometersdriven = læsInputSomDouble();
+        kilometersdriven = readInputAsDouble();
 
 
         System.out.println("---------------------------------------");
@@ -71,10 +68,10 @@ public class MemberController {
 
 
             //Header i de Cykelture man kan ændre, derudover nedenstående i for-løkken udprintes data arraylisten "Cycleweeklist"
-            System.out.printf("%-10s %-20s %-30s %-40s \n", "Nr.", "Ugenummer", "Kørte dage", "Kørt distance for given uge");
+            System.out.printf("%-10s %-20s %-30s %-40s \n", "Nr.", "Ugenummer", "Kørte km for given uge", "Kørte dage");
             System.out.println("-------------------------------------------------------------------------------------------");
             for (Cycleweek cycleweek : currentUser.getCycleweeklist()) {
-                System.out.printf("%-10d %-20d %-30d %-40.2f \n", index, cycleweek.getWeeknumber(), cycleweek.getDaysdriven(), cycleweek.getKilometersdriven());
+                System.out.printf("%-10d %-20d %-30.2f %-40d \n", index, cycleweek.getWeeknumber(), cycleweek.getKilometersdriven(), cycleweek.getDaysdriven());
                 index++;
                 System.out.println("-------------------------------------------------------------------------------------------");
             }
@@ -87,27 +84,29 @@ public class MemberController {
             Cycleweek cycleweektochange;
             System.out.print("");
             System.out.println("Indtast nummeret på den cykeluge du gerne vil ændre: ");
-            i = læsInputSomInt();
+            i = readInputAsInt();
 
-            //Her kalder den Arraylisten "cycleweeklist" ved, at sige currentuser.getCycleweeklist.get(i-1) hvilket betyder at den vil altid starte på 0
-            //Derfor hvis man indtaster 1, så skal den vide at det er plads nummer 0 i arrayet.
+            /*
+            Her kalder den Arraylisten "cycleweeklist" ved, at sige currentuser.getCycleweeklist.get(i-1) hvilket betyder at den vil altid starte på 0
+            Derfor hvis man indtaster 1, så skal den vide at det er plads nummer 0 i arrayet.
+            */
             cycleweektochange = currentUser.getCycleweeklist().get(i - 1);
 
 
             // Her Ugenummeret man gerne vil ændre
             System.out.println("Vælg ugenummer: ");
-            newweeknumber = læsInputSomInt();
+            newweeknumber = readInputAsInt();
             cycleweektochange.setWeeknumber(newweeknumber);
 
             //Her vælges antal kørte kilometer til at ændre
             System.out.println("Vælg kørt distance for given uge: ");
-            newkilometersdriven = læsInputSomDouble();
+            newkilometersdriven = readInputAsDouble();
             cycleweektochange.setKilometersdriven(newkilometersdriven);
 
 
             //Her vælges antal kørte dage til at ændre
             System.out.println("Vælg kørte dage: ");
-            newdaysdriven = læsInputSomInt();
+            newdaysdriven = readInputAsInt();
             cycleweektochange.setDaysdriven(newdaysdriven);
 
 
@@ -118,7 +117,6 @@ public class MemberController {
 
         }
     }
-
 
     public void deleteinformation() {
         int i = 1;
@@ -131,10 +129,10 @@ public class MemberController {
             System.out.println("Dine cykeluger er: ");
             System.out.println("--------------------------------------------------------------------------------------------");
             // Header i Cykelturvisning
-            System.out.printf("%-10s %-20s %-30s %-40s \n", "Nr.", "Ugenummer ", "Kørte dage", "Kørt distance for given uge");
+            System.out.printf("%-10s %-20s %-30s %-40s \n", "Nr.", "Ugenummer ", "Kørte km for given uge", "Kørte dage");
             System.out.println("--------------------------------------------------------------------------------------------");
             for (Cycleweek cykeltur : currentUser.getCycleweeklist()) {
-                System.out.printf("%-10d %-20d %-30d %-40.2f \n", i, cykeltur.getWeeknumber(), cykeltur.getDaysdriven(), cykeltur.getKilometersdriven());
+                System.out.printf("%-10d %-20d %-30.2f %-40d \n", i, cykeltur.getWeeknumber(), cykeltur.getKilometersdriven(), cykeltur.getDaysdriven());
                 i++;
                 System.out.println("--------------------------------------------------------------------------------------------");
             }
@@ -145,7 +143,7 @@ public class MemberController {
             Cycleweek cycleweektodelete;
             System.out.print("");
             System.out.println("Indtast nummeret på den cykeluge du gerne vil slette ");
-            index = læsInputSomInt();
+            index = readInputAsInt();
             --index; // træk en fra antallet af cykelture
             cycleweektodelete = currentUser.getCycleweeklist().get(index);
 
@@ -156,10 +154,9 @@ public class MemberController {
         }
     }
 
-
     public void showInformationAboutOwnTeam() {
 
-        System.out.printf("%-30s%-25s%-20s%-10s", "Holdinformation", "Ugenummer", "Kørte dage", "Kørt distance for given uge\n");
+        System.out.printf("%-30s %-20s %-30s %-20s\n", "Holdinformation", "Ugenummer", "Kørte km for given uge", "Kørte dage");
         System.out.println("-------------------------------------------------------------------------------------------------------");
 
 
@@ -178,7 +175,7 @@ public class MemberController {
                         for (Cycleweek cl : member.getCycleweeklist()) {// Cykelforløb data hentes for hvert enkelt medlem på hold
 
 
-                            System.out.printf("%-30s%-25s%-20s%-10.2f\n", member.getName(), cl.getWeeknumber(), cl.getDaysdriven(), cl.getKilometersdriven());
+                            System.out.printf("%-30s %-20d %-30.2f %-20d\n", member.getName(), cl.getWeeknumber(), cl.getKilometersdriven(), cl.getDaysdriven());
 
                         }
                         System.out.println("-------------------------------------------------------------------------------------------------------");
@@ -189,82 +186,28 @@ public class MemberController {
         }
     }
 
-    /* Created by Ahilan Selliah 18/11/2017
-
-     */
-    public void statisticsonkilometersanddays() {
-        System.out.println("Statistik på indberetninger");
-        System.out.println("-----------------------------------------------");
-        Statistics resultatForBruger = GennemsnitForBruger(currentUser);
-        System.out.println("Statestik for: " + currentUser.getName());
-        System.out.println("Gennemsnitlig kørte km pr. dag: " + resultatForBruger.averageKmPerDay);
-        System.out.println("Gennemsnitlig kørte km pr. uge: " + resultatForBruger.averageKmPerWeek);
-        System.out.println("-----------------------------------------------");
-
-        ArrayList brugerePåMitHold = new ArrayList<User>();
-        for (User u : getTeamForMember(currentUser).getUsers()) {
-            if (u.getUsername() != currentUser.getUsername()) {
-                brugerePåMitHold.add(u);
-                Statistics resultatForHoldbrugere = GennemsnitForBruger(u);
-                System.out.println("Statestik for holdmedlem: " + u.getName());
-                System.out.println("\nGennemsnitlig kørte km pr. dag: " + resultatForHoldbrugere.averageKmPerDay);
-                System.out.println("Gennemsnitlig kørte km pr. uge: " + resultatForHoldbrugere.averageKmPerWeek);
-                System.out.println("");
-            }
-        }
-    }
-
-    private Team getTeamForMember(User user) {
-        for (Team t : data.getTeams()) {
-            for (User u : t.getUsers()) {
-                if (u.getUsername() == user.getUsername())
-                    return t;
-            }
-        }
-
-        return null;
-    }
-
-    private Statistics GennemsnitForBruger(User user) {
-        int antalkørtekilometer = 0;
-        int antalkørtedage = 0;
-        int antalcykelture = user.getCycleweeklist().size();
-        for (Cycleweek c : user.getCycleweeklist()) {
-            antalkørtekilometer += c.getKilometersdriven();
-            antalkørtedage += c.getDaysdriven();
-        }
-        double gennemsnitkørtekmpruge = 0;
-        double gennemsnitkørtekmprdag = 0;
-        if (antalcykelture > 0 && antalkørtedage > 0) {
-            gennemsnitkørtekmpruge = antalkørtekilometer / antalcykelture;
-            gennemsnitkørtekmprdag = antalkørtekilometer / antalkørtedage;
-        }
-        return new Statistics(gennemsnitkørtekmprdag, gennemsnitkørtekmpruge);
-    }
-
-
-    private String læsInputSomString() {
+    private String readInputAsString() {
         return this.input.nextLine();
     }
 
-    private int læsInputSomInt() {
+    public int readInputAsInt() {
         try {
-            String str = læsInputSomString();
+            String str = readInputAsString();
             return Integer.parseInt(str);
         } catch (Exception e) {
             System.out.println("Prøv igen med et tal i stedet!");
-            return læsInputSomInt();
+            return readInputAsInt();
         }
 
     }
 
-    private double læsInputSomDouble() {
+    public double readInputAsDouble() {
         try {
-            String str = læsInputSomString();
+            String str = readInputAsString();
             return Double.parseDouble(str);
         } catch (Exception e) {
             System.out.println("Prøv igen med et tal i stedet!");
-            return læsInputSomDouble();
+            return readInputAsDouble();
         }
 
     }

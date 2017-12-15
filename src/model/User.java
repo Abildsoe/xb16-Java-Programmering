@@ -8,7 +8,6 @@ public class User {
     private String name;
     private UserType type;
     private ArrayList<Cycleweek> cycleweeklist = new ArrayList<>();
-    private Team team;
 
 
     public User(String username, int password, String name, UserType type) {
@@ -17,7 +16,6 @@ public class User {
         this.name = name;
         this.type = type;
         this.cycleweeklist = new ArrayList<>();
-        this.team = team;
     }
 
     public void addcycleweek(Cycleweek cycleweek) {
@@ -45,12 +43,6 @@ public class User {
     // Her oprettes Get metode for "type"
     public UserType getType() {
         return type;
-    }
-
-
-    // Her oprettes en get metode
-    public Team getTeam() {
-        return team;
     }
 
 

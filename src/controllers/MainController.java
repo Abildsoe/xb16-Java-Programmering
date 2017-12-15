@@ -34,7 +34,7 @@ public class MainController {
                     "\n");
             System.out.println("1) Login ");
             System.out.println("2) Opret bruger");
-            int x = læsInputSomInt();
+            int x = readInputAsInt();
 
             if (x == 2) {
                 opretBruger();
@@ -42,13 +42,13 @@ public class MainController {
 
 
                 System.out.println("Indtast venligst dit brugernavn:");
-                username = læsInputSomString();
+                username = readInputAsString();
 
                 System.out.println("Indtast venligst din adgangskode:");
-                password = læsInputSomInt();
+                password = readInputAsInt();
 
                 if (authUser(username, password)) {
-                    if (currentUser.getType() == UserType.Holdkaptajn) {
+                    if (currentUser.getType() == UserType.Leader) {
                         userCtrl = new LeaderController(currentUser, input, db);
                     } else {
                         userCtrl = new MemberController(currentUser, input, db);
@@ -56,7 +56,7 @@ public class MainController {
 
                     do {
                         userCtrl.showUserMenu();
-                        int valg = læsInputSomInt();
+                        int valg = readInputAsInt();
 
                         switch (valg) {
 
@@ -78,12 +78,16 @@ public class MainController {
                                 break;
 
                             case 5:
-                                userCtrl.statisticsonkilometersanddays();
+                                if (currentUser.getType() != UserType.Leader) {
+                                    System.out.println("Ugyldigt valg\n");
+                                } else {
+                                    ((LeaderController) userCtrl).statisticsonkilometersanddays();
+                                }
                                 break;
 
                             case 6:
-                                if (currentUser.getType() != UserType.Holdkaptajn) {
-                                    System.out.println("Ugyldigt valg");
+                                if (currentUser.getType() != UserType.Leader) {
+                                    System.out.println("Ugyldigt valg\n");
                                 } else {
                                     ((LeaderController) userCtrl).showallinformationaboutEveryTeam();
                                 }
@@ -116,9 +120,9 @@ public class MainController {
         int password;
         System.out.println("Opret bruger");
         System.out.println("Indtast fulde navn");
-        String navn = læsInputSomString();
+        String navn = readInputAsString();
         System.out.println("Indtast venligst det ønskede brugernavn:");
-        username = læsInputSomString();
+        username = readInputAsString();
         for (User u : this.db.getUsers()) {
             if (username.equals(u.getUsername())) {
                 System.out.println("Brugernavn er allerede taget");
@@ -128,14 +132,14 @@ public class MainController {
         }
 
         System.out.println("Indtast venligst din adgangskode:");
-        password = læsInputSomInt();
+        password = readInputAsInt();
         System.out.println("Team navne og team id");
         for (Team t : db.getTeams()) {
             System.out.println(t.getTeamName() + ": " + t.getTeamID());
 
         }
         System.out.println("Indtast venligst dit teams id:");
-        int teamId = læsInputSomInt();
+        int teamId = readInputAsInt();
         Team team = null;
         for (Team t : db.getTeams()) {
             if (t.getTeamID() == teamId) {
@@ -166,17 +170,17 @@ public class MainController {
         return false;
     }
 
-    public String læsInputSomString() {
+    public String readInputAsString() {
         return this.input.nextLine();
     }
 
-    public int læsInputSomInt() {
+    public int readInputAsInt() {
         try {
-            String str = læsInputSomString();
+            String str = readInputAsString();
             return Integer.parseInt(str);
         } catch (Exception e) {
             System.out.println("Prøv igen med et tal i stedet!");
-            return læsInputSomInt();
+            return readInputAsInt();
         }
 
     }
