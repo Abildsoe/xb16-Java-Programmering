@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class MainController {
     private Data db;
     private User currentUser;
-    private MemberController userCtrl;
+    private ParticipantController userCtrl;
     private Scanner input;
 
     public MainController() {
@@ -37,7 +37,7 @@ public class MainController {
             int x = readInputAsInt();
 
             if (x == 2) {
-                opretBruger();
+                createParticipant();
             } else if (x == 1) {
 
 
@@ -51,7 +51,7 @@ public class MainController {
                     if (currentUser.getType() == UserType.Leader) {
                         userCtrl = new LeaderController(currentUser, input, db);
                     } else {
-                        userCtrl = new MemberController(currentUser, input, db);
+                        userCtrl = new ParticipantController(currentUser, input, db);
                     }
 
                     do {
@@ -115,18 +115,18 @@ public class MainController {
     }
 
     //Created by Ahilan Selliah 17/11/2017
-    private void opretBruger() {
+    private void createParticipant() {
         String username;
         int password;
-        System.out.println("Opret bruger");
+        System.out.println("Opret deltager");
         System.out.println("Indtast fulde navn");
         String navn = readInputAsString();
         System.out.println("Indtast venligst det ønskede brugernavn:");
         username = readInputAsString();
         for (User u : this.db.getUsers()) {
             if (username.equals(u.getUsername())) {
-                System.out.println("Brugernavn er allerede taget");
-                opretBruger();
+                System.out.println("Brugernavn er allerede taget\n");
+                createParticipant();
                 break;
             }
         }
@@ -148,7 +148,7 @@ public class MainController {
             }
         }
 
-        User ny = new User(username, password, navn, UserType.User);
+        User ny = new User(username, password, navn, UserType.Participant);
         db.getUsers().add(ny);
         team.addUser(ny);
         System.out.println("Brugeren er oprettet, velkommen!\n");
@@ -170,11 +170,11 @@ public class MainController {
         return false;
     }
 
-    public String readInputAsString() {
+    private String readInputAsString() {
         return this.input.nextLine();
     }
 
-    public int readInputAsInt() {
+    private int readInputAsInt() {
         try {
             String str = readInputAsString();
             return Integer.parseInt(str);
