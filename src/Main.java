@@ -6,3 +6,9 @@ public class Main {
         mainController.run();
     }
 }
+
+
+
+// Navngivning skal ændres så der er med stort forbogstav
+
+// Kommentar skal tilrettes

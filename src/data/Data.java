@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Data {
 
     private ArrayList<Team> teams;
-    private ArrayList<User> users = new ArrayList<>();
+    private ArrayList<User> users;
 
     public Data() {
         this.users = new ArrayList<>();

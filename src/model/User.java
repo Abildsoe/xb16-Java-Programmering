@@ -7,7 +7,7 @@ public class User {
     private int password;
     private String name;
     private UserType type;
-    private ArrayList<Cycleweek> cycleweeklist = new ArrayList<>();
+    private ArrayList<Cycleweek> cycleweeklist;
 
 
     public User(String username, int password, String name, UserType type) {
