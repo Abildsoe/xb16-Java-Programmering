@@ -9,7 +9,7 @@ import model.User;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class LeaderController extends MemberController {
+public class LeaderController extends ParticipantController {
 
 
     public LeaderController(User currentUser, Scanner input, Data data) {
@@ -51,7 +51,7 @@ public class LeaderController extends MemberController {
         System.out.println("-----------------------------------------------");
 
         ArrayList usersOnMyTeam = new ArrayList<User>();
-        for (User u : getTeamForMember(currentUser).getUsers()) {
+        for (User u : getTeamForUsers(currentUser).getUsers()) {
             if (u.getUsername() != currentUser.getUsername()) {
                 usersOnMyTeam.add(u);
                 Statistics resultsForTeamUsers = averageForUser(u);
@@ -63,7 +63,7 @@ public class LeaderController extends MemberController {
         }
     }
 
-    private Team getTeamForMember(User user) {
+    private Team getTeamForUsers(User user) {
         for (Team t : data.getTeams()) {
             for (User u : t.getUsers()) {
                 if (u.getUsername() == user.getUsername())
@@ -104,4 +104,3 @@ public class LeaderController extends MemberController {
 
     }
 }
-

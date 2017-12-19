@@ -5,19 +5,18 @@ import model.*;
 
 import java.util.Scanner;
 
-public class MemberController {
+public class ParticipantController {
     Scanner input;
-
     protected User currentUser;
     protected Data data;
 
-    public MemberController(User currentUser, Scanner input, Data data) {
+    public ParticipantController(User currentUser, Scanner input, Data data) {
         this.currentUser = currentUser;
         this.input = input;
         this.data = data;
     }
 
-    // Her oprettes "User menuen"
+    // Her oprettes "Participant menuen"
     public void showUserMenu() {
 
         System.out.println("Brugermenu:");
@@ -37,12 +36,12 @@ public class MemberController {
         //Her indtastes en int værdi, som referer tilbage til vores inputcontroller hvor der laves "try" "catch" for at undgå fejl
         System.out.println("Indtast ugenummer: ");
         weeknumber = readInputAsInt();
-        //Her indtastes en double værdi af "antal kilometer"
-        System.out.println("Indtast Kørte dage");
-        daysdriven = readInputAsInt();
         //Her indtastes en int værdi, som referer tilbage til vores inputcontroller hvor der laves "try" "catch" for at undgå fejl
         System.out.println("Indtast kørt distance for given uge");
         kilometersdriven = readInputAsDouble();
+        //Her indtastes en double værdi af "antal kilometer"
+        System.out.println("Indtast Kørte dage");
+        daysdriven = readInputAsInt();
 
 
         System.out.println("---------------------------------------");
@@ -190,7 +189,7 @@ public class MemberController {
         return this.input.nextLine();
     }
 
-    public int readInputAsInt() {
+    private int readInputAsInt() {
         try {
             String str = readInputAsString();
             return Integer.parseInt(str);
@@ -201,7 +200,7 @@ public class MemberController {
 
     }
 
-    public double readInputAsDouble() {
+    private double readInputAsDouble() {
         try {
             String str = readInputAsString();
             return Double.parseDouble(str);
