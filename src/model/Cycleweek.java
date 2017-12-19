@@ -7,7 +7,7 @@ public class Cycleweek {
     private int daysdriven;
 
 
-    public Cycleweek(double kilometersdriven, int weeknumber, int daysdriven) {
+    public Cycleweek(int weeknumber, double kilometersdriven, int daysdriven) {
         this.kilometersdriven = kilometersdriven;
         this.weeknumber = weeknumber;
         this.daysdriven = daysdriven;

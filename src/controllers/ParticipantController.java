@@ -50,7 +50,7 @@ public class ParticipantController {
 
         System.out.println("---------------------------------------");
 
-        Cycleweek cycleweek = new Cycleweek(kilometersdriven, daysdriven, weeknumber);
+        Cycleweek cycleweek = new Cycleweek(weeknumber, kilometersdriven, daysdriven);
         this.currentUser.addcycleweek(cycleweek);
 
 
