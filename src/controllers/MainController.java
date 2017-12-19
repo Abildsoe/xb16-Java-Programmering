@@ -1,4 +1,3 @@
-//http://www.chris.com/ascii/index.php?art=transportation%2Fbicycles - koden til de 5 cykler er fundet her
 package controllers;
 
 import data.Data;
@@ -24,6 +23,7 @@ public class MainController {
         String username;
         int password;
 
+        //http://www.chris.com/ascii/index.php?art=transportation%2Fbicycles - koden til de 5 cykler er fundet her
         while (true) {
             System.out.println("Velkommen:");
             System.out.println("\n" +
@@ -33,7 +33,7 @@ public class MainController {
                     " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
                     "\n");
             System.out.println("1) Login ");
-            System.out.println("2) Opret bruger");
+            System.out.println("2) Opret deltager");
             int x = readInputAsInt();
 
             if (x == 2) {
@@ -46,7 +46,7 @@ public class MainController {
 
                 System.out.println("Indtast venligst din adgangskode:");
                 password = readInputAsInt();
-
+                // Hvis man logger ind med brugernavn og password til holdkaptajn opfanges det i denne if else statement
                 if (authUser(username, password)) {
                     if (currentUser.getType() == UserType.Leader) {
                         userCtrl = new LeaderController(currentUser, input, db);
@@ -55,9 +55,9 @@ public class MainController {
                     }
 
                     do {
-                        userCtrl.showUserMenu();
+                        userCtrl.showParticipantMenu();
                         int valg = readInputAsInt();
-
+                        // Vores switch til navigering i programmet hovedmenu
                         switch (valg) {
 
                             case 1:
@@ -114,7 +114,7 @@ public class MainController {
         }
     }
 
-    //Created by Ahilan Selliah 17/11/2017
+    //Opret en deltager
     private void createParticipant() {
         String username;
         int password;
@@ -151,11 +151,11 @@ public class MainController {
         User ny = new User(username, password, navn, UserType.Participant);
         db.getUsers().add(ny);
         team.addUser(ny);
-        System.out.println("Brugeren er oprettet, velkommen!\n");
+        System.out.println("Deltageren er oprettet, velkommen!\n");
         System.out.println("------------------------------------------------------------------------------\n");
 
     }
-
+//Boolean bruger til at autorisere username og password ved indlogning
     private boolean authUser(String username, int password) {
         for (User user : db.getUsers()) {
 
@@ -170,10 +170,11 @@ public class MainController {
         return false;
     }
 
+//Bruges til at læse hele input fra skanneren og returnere variablen
     private String readInputAsString() {
         return this.input.nextLine();
     }
-
+//Try catch for en integer
     private int readInputAsInt() {
         try {
             String str = readInputAsString();
@@ -184,7 +185,7 @@ public class MainController {
         }
 
     }
-
+//Log ud funktion
     private void logUd() {
 
         System.out.println("Du er nu logget ud af systemet, hvis du har lyst kan du logge ind igen eller på en anden bruger - tak for i dag.\n");

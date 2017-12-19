@@ -1,6 +1,6 @@
 package model;
 
-// Created by Ahilan Selliah 18/11/2017
+//Enum bruges til at definere aktørerne i programmet
 public enum UserType {
     Leader,
     Participant

@@ -6,8 +6,8 @@ import model.*;
 import java.util.Scanner;
 
 public class ParticipantController {
-    Scanner input;
     protected User currentUser;
+    Scanner input;
     protected Data data;
 
     public ParticipantController(User currentUser, Scanner input, Data data) {
@@ -17,9 +17,9 @@ public class ParticipantController {
     }
 
     // Her oprettes "Participant menuen"
-    public void showUserMenu() {
+    public void showParticipantMenu() {
 
-        System.out.println("Brugermenu:");
+        System.out.println("Deltagermenu:");
         System.out.println("1) Indberetning af cykeluge");
         System.out.println("2) Ændre cykeluger");
         System.out.println("3) Slet cykeluger");
@@ -184,11 +184,11 @@ public class ParticipantController {
             }
         }
     }
-
+    //Bruges til at læse hele input fra skanneren og returnere variablen
     private String readInputAsString() {
         return this.input.nextLine();
     }
-
+//Try catch til en integer
     private int readInputAsInt() {
         try {
             String str = readInputAsString();
@@ -199,7 +199,7 @@ public class ParticipantController {
         }
 
     }
-
+//Try catch til en double som laver undtagelse uafhængigt af
     private double readInputAsDouble() {
         try {
             String str = readInputAsString();

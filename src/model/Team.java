@@ -3,13 +3,13 @@ package model;
 import java.util.ArrayList;
 
 public class Team {
-
+//Her oprettes privat attributter, som kun er brugebare for denne klasse, de fortæller hvilken variable deres værdi er.
     private ArrayList<User> users = new ArrayList<>();
     private int teamID;
     private String teamName;
     private String teamLeader;
 
-
+//oprettelse af konstruktør som bruges til at forme hvad et team skal indeholde, nemlig parametrene i konstruktøren
     public Team(int teamID, String teamName, String teamLeader) {
 
         this.teamID = teamID;

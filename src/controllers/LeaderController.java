@@ -22,7 +22,7 @@ public class LeaderController extends ParticipantController {
         //Først itterer vi gennem vores forskellige teams og printer information som, teamnavn og holdkaptajn
         for (Team team : this.data.getTeams()) {
             System.out.println("\nHoldnavn: " + team.getTeamName());
-            System.out.println("Leader: " + team.getTeamLeader());
+            System.out.println("Holdkaptajn: " + team.getTeamLeader());
             System.out.println();
             System.out.printf("%-30s %-20s %-30s %-20s %-25s%-20s\n", "Navn på hold deltager", "Ugenummer", "Kørte km for given uge", "Kørte dage", "Total kørte km", "Total kørte dage");
             System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------");
@@ -40,7 +40,7 @@ public class LeaderController extends ParticipantController {
         }
     }
 
-    //Created by Ahilan Selliah 18/11/2017
+    // Print af statistik metode for current user. Gennemsnit pr. dag og pr. uge
     public void statisticsonkilometersanddays() {
         System.out.println("Statistik på indberetninger");
         System.out.println("-----------------------------------------------");
@@ -50,6 +50,7 @@ public class LeaderController extends ParticipantController {
         System.out.println("Gennemsnitlig kørte km pr. uge: " + resultForUser.averageKmPerWeek);
         System.out.println("-----------------------------------------------");
 
+    //Print af statistik for eget hold
         ArrayList usersOnMyTeam = new ArrayList<User>();
         for (User u : getTeamForUsers(currentUser).getUsers()) {
             if (u.getUsername() != currentUser.getUsername()) {
@@ -74,6 +75,7 @@ public class LeaderController extends ParticipantController {
         return null;
     }
 
+    //Metode til at udregne statistik
     private Statistics averageForUser(User user) {
         int kilometersdriven = 0;
         int daysdriven = 0;
@@ -91,7 +93,8 @@ public class LeaderController extends ParticipantController {
         return new Statistics(averageDrivenKilometersDrivenprDay, averageDrivenKilometersDrivenprWeek);
     }
 
-    public void showUserMenu() {
+    //Holdkaptajn hovedmenu
+    public void showParticipantMenu() {
         System.out.println("Holdkaptajnmenu:");
         System.out.println("1) Indberetning af cykeluge");
         System.out.println("2) Ændre cykeluger");

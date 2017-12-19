@@ -18,7 +18,7 @@ public class Data {
 
         generateData();
     }
-
+//Vores array med brugere
     private void generateData() {
 
         Team team1 = new Team(1, "Advokatsamfundet", "Hans Hansen");
@@ -86,6 +86,7 @@ public class Data {
         team4.addUser(user15);
         team4.addUser(user16);
 
+//Vores array med forudsatte cykeluger
         Cycleweek cycleweek1 = new Cycleweek(30, 40, 5);
         user1.addcycleweek(cycleweek1);
         Cycleweek cycleweek2 = new Cycleweek(45, 40, 4);
